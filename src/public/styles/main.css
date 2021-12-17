@@ -1,0 +1,69 @@
+@charset "UTF-8";
+/* Colors */
+/*Font families*/
+/*Font sizes*/
+/*Global components (USING BEM METODOLOGY)*/
+.container {
+  /*Contenedor que ocupa el 80% del ancho disponible (Para agregar márgenes laterales)*/
+  width: 80%;
+  max-width: 1200px;
+  margin: 0px auto;
+}
+
+.btn {
+  /*Block*/
+  border: 1px transparent;
+  padding: 0.4em 0.6em;
+  cursor: pointer;
+  background-color: white;
+  /*Color base del fondo*/
+  text-transform: uppercase;
+  border-radius: 16px;
+  color: white;
+  /*Color base de las letras*/
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  /*Nunca permite que se "partan las palabras"*/
+  /*Elements*/
+  /*Modifiers*/
+}
+
+.btn__primary {
+  background-color: #FF8800;
+}
+
+.btn__danger {
+  background-color: #FF0F00;
+}
+
+.btn__primary_transparent {
+  background-color: white;
+  border: 1px solid #FF8800;
+  color: #FF8800;
+}
+
+.btn__danger_transparent {
+  background-color: white;
+  border: 1px solid #FF0F00;
+  color: #FF0F00;
+}
+
+.subtitle {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  /*Modificadores de la clase*/
+}
+
+.subtitle--white {
+  color: white;
+}
+
+/*Empty file*/
+/*Empty file*/
+body {
+  font-family: "Roboto", sans-serif;
+  background: #FAFAFA;
+}
+/*# sourceMappingURL=main.css.map */

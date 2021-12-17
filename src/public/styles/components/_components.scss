@@ -1,0 +1,54 @@
+/*Global components (USING BEM METODOLOGY)*/
+
+.container{
+    /*Contenedor que ocupa el 80% del ancho disponible (Para agregar márgenes laterales)*/
+    width: 80%;
+    max-width: 1200px;
+    margin: 0px auto;
+}
+
+.btn{
+    /*Block*/
+    border: 1px transparent; 
+    padding: 0.4em 0.6em; 
+    cursor: pointer;
+    background-color: white; /*Color base del fondo*/
+    text-transform: uppercase;
+    border-radius: 16px;
+    color: white; /*Color base de las letras*/
+    width: max-content; /*Nunca permite que se "partan las palabras"*/
+
+    /*Elements*/
+    &__primary{
+        background-color: $main_orange;
+    }
+
+    &__danger{
+        background-color: $danger_red;
+    }
+
+    &__primary_transparent{
+        background-color: white;
+        border: 1px solid $main_orange;
+        color: $main_orange; 
+    }
+
+    &__danger_transparent{
+        background-color: white;
+        border: 1px solid $danger_red;
+        color: $danger_red;
+    }
+
+    /*Modifiers*/
+}
+
+.subtitle{
+    font-size: $lg;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    /*Modificadores de la clase*/
+    &--white{
+        color: white; 
+    }
+}

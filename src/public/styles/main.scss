@@ -1,0 +1,9 @@
+@import './base/globals'; 
+@import './components/components'; 
+@import './layouts/navbar'; 
+@import './pages/home';
+
+body{
+    font-family: $roboto; 
+    background: $background_grey;
+}

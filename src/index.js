@@ -1,11 +1,9 @@
 const express = require('express');  
 const path = require('path'); 
 const morgan = require('morgan');
-const express_hbs = require('express-handlebars'); 
+const expressHbs = require('express-handlebars'); 
 
 const app = express();
-
-const database = require('./database/database')
 
 //Middlewares
 app.use(morgan('dev')); 
@@ -21,13 +19,14 @@ app.set('views', path.join(__dirname, 'views'));    //Ruta a las vistas
 
 // --Handlebars
 app.engine(
-    '.hbs', express_hbs.engine({
+    '.hbs', expressHbs.engine({
         defaultLayout: 'main',
         layoutsDir: path.join(app.get('views'), 'layouts'),
         partialsDir: path.join(app.get('views'), 'partials'), 
         extname: '.hbs' 
         /* helpers:  Aún no se requiere*/
-})); 
+    })
+); 
 app.set('view engine', '.hbs');
 // -- End handlebars
 
@@ -38,7 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));    //Ruta a los archivo
 const router = require('./routes/router.js'); 
 app.use('/users', router.authentication); 
 app.use('/plans', router.plans); 
-app.use('/', router.general_routes); 
+app.use('/', router.generalRoutes); 
 
 
 //Starting the server

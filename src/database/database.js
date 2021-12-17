@@ -14,12 +14,12 @@ pool.getConnection((err, connection) => {
             console.error('DATABASE HAS TO MANY CONNECTIONS');
         }
         if (err.code === 'ECONNREFUSED') {
-            console.error('DATABASE CONNECTION WAS REFUSED')
+            console.error('DATABASE CONNECTION WAS REFUSED');
         }
     }
     if(connection) connection.release();
     console.log('DB is connected');
     return;
-})
+});
 pool.query = promisify(pool.query); //allows promisify
 module.exports = pool;

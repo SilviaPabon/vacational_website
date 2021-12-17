@@ -1,0 +1,58 @@
+-- CREATE TABLES SCRIPT 
+
+-- MAIN TABLES
+CREATE TABLE USERS(
+    usersId INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    usersFullname VARCHAR(64) NOT NULL,
+    usersUsername VARCHAR(32) NOT NULL,
+    usersPassword VARCHAR(128) NOT NULL
+); 
+
+CREATE TABLE PLANS(
+    plansId INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+    plansName VARCHAR(64) NOT NULL, 
+    plansDescription VARCHAR(300) NOT NULL, 
+    plansCountry VARCHAR(32) NOT NULL, 
+    plansPrice FLOAT NOT NULL, 
+    plansImageUrl VARCHAR(255) NOT NULL, 
+    plansIncludeHotel TINYINT(1) NOT NULL, 
+    plansIncludeFlights TINYINT(1) NOT NULL, 
+    plansIncludeActivities TINYINT(1) NOT NULL, 
+    plansNumPersons INT UNSIGNED NOT NULL, 
+    plansDays INT UNSIGNED NOT NULL
+); 
+
+CREATE TABLE ROLES(
+	rolesId INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+    rolesDescription VARCHAR(32) NOT NULL
+); 
+
+-- RELATIONS TABLES
+CREATE TABLE usersHasRoles(
+	userId INT UNSIGNED NOT NULL, 
+    roleId INT UNSIGNED NOT NULL,
+    
+    CONSTRAINT fk_users_roles_users FOREIGN KEY (userId) REFERENCES USERS(usersId), 
+    CONSTRAINT fk_users_roles_roles FOREIGN KEY (roleId) REFERENCES ROLES(rolesId)
+); 
+
+CREATE TABLE COMMENTS(
+    commentsId INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    commentsDescription VARCHAR(384) NOT NULL,
+    commentsDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, 
+    usersId INT UNSIGNED NOT NULL,
+    plansId INT UNSIGNED NOT NULL, 
+    
+    CONSTRAINT fk_comments_users FOREIGN KEY (usersId) REFERENCES USERS(usersId),
+    CONSTRAINT fk_comments_plans FOREIGN KEY (plansId) REFERENCES PLANS(plansId)
+);
+
+CREATE TABLE RESERVATIONS(
+    reservationsId INT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    reservationsDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	usersId INT UNSIGNED NOT NULL,
+    plansId INT UNSIGNED NOT NULL, 
+    
+    CONSTRAINT fk_reservations_users FOREIGN KEY (usersId) REFERENCES USERS(usersId),
+    CONSTRAINT fk_reservations_plans FOREIGN KEY (plansId) REFERENCES PLANS(plansId)
+);
