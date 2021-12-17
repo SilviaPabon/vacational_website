@@ -17,6 +17,13 @@ body{
 
 @media (max-width: 576px){
 
+    /*En celulares los tamaños de fuente cambian automáticamente*/
+    $x_sm: 10px; 
+    $sm: 12px; 
+    $md: 14px; 
+    $lg: 16px; 
+    $x_lg: 28px; 
+
     /*Celulares*/
     nav{
 
