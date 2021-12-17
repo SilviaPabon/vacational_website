@@ -22,8 +22,29 @@
     <body>
 
         {{! Navbar }}
+        <nav>
+            <a href="/" class="nav__brand"><img src="/images/brand_logo.png" alt="Brand logo" class="nav__logo"> BRAND NAME</a>
+
+            <div class="nav__options">
+                <ul class="nav__navigation">
+                    <li><a href="#" class="btn btn__nav">HOME</a></li>
+                    <li><a href="#" class="btn btn__nav">OUR PLANS</a></li>
+                    <li><a href="#" class="btn btn__nav">LOGIN</a></li>
+                    <li><a href="#" class="btn btn__primary">SIGN-UP</a></li>
+                </ul>
+
+                <!-- Menú para celulares -->
+                <div class="nav__toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
 
         {{{body}}}
+
+        <!-- Script de la barra de navegación -->
+        <script src="/scripts/navbar.js"></script>
+        <script src="https://kit.fontawesome.com/5023e2a492.js" crossorigin="anonymous"></script>
 
         {{! Footer }}
 
