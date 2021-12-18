@@ -52,7 +52,7 @@
 /*Plans carrousel*/
 .carrousel-section{
     background-color: $main_orange;
-    border-radius: 32px;
+    border-radius: 16px;
     
     /*Para centrar el contenido en la sección*/
     display: flex;
@@ -63,7 +63,9 @@
     gap: 36px;
 
     /*La sección ocupa el 80% del alto disponible*/
-    height: 80vh;
+    min-height: 80vh;
+    padding: 16px 0;
+    margin: 16px 0;
 
     & h2{
         /*Se quita el margin por defecto del título y ocupa el 90% del ancho disponible*/
