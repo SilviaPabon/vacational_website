@@ -719,6 +719,23 @@ body {
   background: #FAFAFA;
 }
 
+@media (max-width: 1400px) {
+  .hero-content {
+    width: 60%;
+  }
+  .hero-content h1 {
+    /*Se quita el margin por defecto del título*/
+    margin: 0;
+    font-size: 36px;
+  }
+  .hero-content p {
+    font-size: 26px;
+  }
+  .hero-content .btn--hero {
+    font-size: 22px;
+  }
+}
+
 @media (max-width: 845px) {
   /*Dispositivos medianos*/
   .plan-container {
