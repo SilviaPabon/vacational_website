@@ -4,7 +4,12 @@
     /*Contenedor que ocupa el 80% del ancho disponible (Para agregar márgenes laterales)*/
     width: 80%;
     max-width: 1200px;
-    margin: 0px auto;
+    margin: 16px auto;
+}
+
+.grid-12{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
 }
 
 .btn{
@@ -18,6 +23,8 @@
     color: white; /*Color base de las letras*/
     width: max-content; /*Nunca permite que se "partan las palabras"*/
     transition: all 0.3s ease;
+    text-decoration: none;
+    margin: 8px 0;
 
     /*Elements*/
     &__primary{
@@ -60,5 +67,19 @@
     /*Modificadores de la clase*/
     &--white{
         color: white; 
+    }
+
+    &--orange{
+        color: $main_orange;
+    }
+}
+
+.title{
+    font-size: $x_lg;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    &--orange{
+        color: $main_orange; 
     }
 }
