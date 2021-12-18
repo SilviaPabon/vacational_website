@@ -38,6 +38,7 @@ body{
             height: calc(100vh - 60px);
             flex-direction: column;
             overflow-y: auto;
+            z-index: 2;
 
             background-color: $main-orange;
             line-height: 36px;
