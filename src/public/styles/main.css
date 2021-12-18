@@ -494,7 +494,64 @@ nav .nav__navigation a {
 }
 
 /*Hero container*/
-/* Why section*/
+.hero-section {
+  color: white;
+  width: 100%;
+  height: calc(100vh - 60px);
+  background: url("/images/hero_bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* para generar el centramiento de los textos */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.hero-content {
+  width: 50%;
+  /* para mantener constantes los tamaños de los textos y btn */
+}
+
+.hero-content h1 {
+  /*Se quita el margin por defecto del título*/
+  margin: 0;
+  font-size: 2vw;
+}
+
+.hero-content p {
+  font-size: 1.2vw;
+}
+
+.hero-content .hero-let-unique {
+  color: #FF8800;
+}
+
+.hero-content .btn--hero {
+  font-size: 1.2vw;
+}
+
+/* Why section
+
+.why-section {
+    color: white;
+    width: 100%;
+    height: 100%;
+}
+*/
 /*Plans carrousel*/
 .carrousel-section {
   background-color: #FF8800;
@@ -680,6 +737,23 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  .hero-content {
+    width: 60%;
+  }
+  .hero-content h1 {
+    /*Se quita el margin por defecto del título*/
+    margin: 0;
+    font-size: 28px;
+  }
+  .hero-content p {
+    font-size: 20px;
+  }
+  .hero-content .btn--hero {
+    font-size: 18px;
+  }
+}
+
 @media (max-width: 576px) {
   /*En celulares los tamaños de fuente cambian automáticamente*/
   /*Celulares*/
@@ -720,6 +794,18 @@ body {
   nav .nav__visible {
     left: 0;
     /*Se pasa al visible*/
+  }
+  /* Hero */
+  .hero-content h1 {
+    /*Se quita el margin por defecto del título*/
+    margin: 0;
+    font-size: 26px;
+  }
+  .hero-content p {
+    font-size: 14px;
+  }
+  .hero-content .btn--hero {
+    font-size: 16px;
   }
 }
 /*# sourceMappingURL=main.css.map */
