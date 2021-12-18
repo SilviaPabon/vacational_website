@@ -23,8 +23,8 @@ app.engine(
         defaultLayout: 'main',
         layoutsDir: path.join(app.get('views'), 'layouts'),
         partialsDir: path.join(app.get('views'), 'partials'), 
-        extname: '.hbs' 
-        /* helpers:  Aún no se requiere*/
+        extname: '.hbs', 
+        helpers: require('./libs/handlebarsHelpers'),
     })
 ); 
 app.set('view engine', '.hbs');

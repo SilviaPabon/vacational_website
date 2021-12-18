@@ -1,35 +1,48 @@
-@import './base/globals'; 
-@import './vendors/normalize'; 
-@import './components/components'; 
-@import './layouts/navbar'; 
+@import './base/globals';
+@import './vendors/normalize';
+@import './components/components';
+@import './layouts/navbar';
 @import './pages/home';
+@import './pages/planDetails';
 
-body{
-    font-family: $roboto; 
+body {
+    font-family: $roboto;
     background: $background_grey;
 }
 
-@media (max-width: 768px){
-
+@media (max-width: 845px) {
     /*Dispositivos medianos*/
+    .plan-container {
+        /* En dispositivos pequeños la imágen ocupa las 12 columnas del grid */
+        .plan__image {
+            grid-column: 1/-1;
+        }
 
-};
+        /*El dispositivos pequeños los textos también ocupan las 12 columnas del grid, de este modo,
+        Se pone uno debajo del otro */
+        .plan__main-info {
+            grid-column: 1/-1;
+        }
+    }
 
-@media (max-width: 576px){
+    .plan__comments {
+        grid-column: 1/-1;
+    }
+}
 
+@media (max-width: 576px) {
     /*En celulares los tamaños de fuente cambian automáticamente*/
-    $x_sm: 10px; 
-    $sm: 12px; 
-    $md: 14px; 
-    $lg: 16px; 
-    $x_lg: 28px; 
+    $x_sm: 10px;
+    $sm: 12px;
+    $md: 14px;
+    $lg: 16px;
+    $x_lg: 28px;
 
     /*Celulares*/
-    nav{
-
+    nav {
         padding: 0px 16px;
 
-        .nav__navigation{
+        .nav__navigation {
             /*Ahora se posiciona en forma de lista debajo del navbar*/
             position: fixed;
             top: 60px;
@@ -48,19 +61,18 @@ body{
             padding-top: 16px;
             transition: 0.6s ease all;
 
-            & li{
+            & li {
                 width: 100%;
                 text-align: center;
             }
         }
-    
-        .nav__toggle{
+
+        .nav__toggle {
             display: inline-block;
         }
 
-        .nav__visible{
+        .nav__visible {
             left: 0; /*Se pasa al visible*/
         }
     }
-
-};
+} ;
