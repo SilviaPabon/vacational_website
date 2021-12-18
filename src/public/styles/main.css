@@ -350,7 +350,14 @@ template {
   /*Contenedor que ocupa el 80% del ancho disponible (Para agregar márgenes laterales)*/
   width: 80%;
   max-width: 1200px;
-  margin: 0px auto;
+  margin: 16px auto;
+}
+
+.grid-12 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[12];
+      grid-template-columns: repeat(12, 1fr);
 }
 
 .btn {
@@ -370,6 +377,8 @@ template {
   /*Nunca permite que se "partan las palabras"*/
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  text-decoration: none;
+  margin: 8px 0;
   /*Elements*/
   /*Modifiers*/
 }
@@ -412,6 +421,20 @@ template {
 
 .subtitle--white {
   color: white;
+}
+
+.subtitle--orange {
+  color: #FF8800;
+}
+
+.title {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.title--orange {
+  color: #FF8800;
 }
 
 nav {
@@ -535,13 +558,126 @@ nav .nav__navigation a {
   font-weight: lighter;
 }
 
+.plan-container {
+  gap: 16px;
+}
+
+.plan-container .plan__image {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 7;
+  grid-column: 1/8;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.plan-container .plan__image img {
+  width: 100%;
+  border-radius: 32px;
+}
+
+.plan-container .plan__main-info {
+  grid-column: 8/-1;
+}
+
+.plan-container .plan__main-info p {
+  font-weight: 300;
+}
+
+.plan-container .plan__main-info p span {
+  font-weight: bold;
+  color: #FF8800;
+}
+
+/*Tabla con los detalles del plan*/
+.plan__details {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.plan__details th,
+.plan__details td {
+  padding: 8px;
+}
+
+.plan__details tr:nth-child(even) {
+  background-color: #e2e2e2;
+}
+
+.plan__details tr:hover {
+  background-color: #bdbdbd;
+}
+
+.plan__details,
+.plan__details tr,
+.plan__details td {
+  border: 1px solid #b4b4b4;
+}
+
+/*Sección de los comentarios*/
+.plan__comments {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 7;
+  grid-column: 1/8;
+}
+
+.plan__comments .commentsDescription {
+  resize: none;
+  width: 100%;
+  border: 1px solid #EBEBEB;
+  border-radius: 8px;
+  height: 60px;
+}
+
+.plan__comments .planComment {
+  margin-top: 4px;
+}
+
+.plan__comments .planComment p {
+  margin: 0 0 4px 0;
+}
+
+.plan__comments .planComment__date {
+  color: #8D8D8D;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.plan__comments .planComment__content {
+  font-weight: 300;
+}
+
+.no-comments {
+  font-weight: 300;
+  text-transform: uppercase;
+  color: #8D8D8D;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   background: #FAFAFA;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 845px) {
   /*Dispositivos medianos*/
+  .plan-container {
+    /* En dispositivos pequeños la imágen ocupa las 12 columnas del grid */
+    /*El dispositivos pequeños los textos también ocupan las 12 columnas del grid, de este modo,
+        Se pone uno debajo del otro */
+  }
+  .plan-container .plan__image {
+    grid-column: 1/-1;
+  }
+  .plan-container .plan__main-info {
+    grid-column: 1/-1;
+  }
+  .plan__comments {
+    grid-column: 1/-1;
+  }
 }
 
 @media (max-width: 576px) {
