@@ -1,9 +1,37 @@
 <main>
-    
+
     {{!-- Hero container --}}
 
     {{!-- Why section --}}
 
     {{!-- Carrousel section --}}
+    
+    {{!Primero verifica que sí existan datos para el carrousel}}
+    {{#if carrouselData}}
+
+        <section class='carrousel-section'>
+            <h2 class="subtitle subtitle--white">DIFFERENT PLANS FOR DIFFERENT LIKES</h2>
+            <div class='container'>
+                <div class='splide'>
+                    <div class='splide__track'>
+                        <div class='splide__list carrouser-container'>
+                            {{#each carrouselData}}
+                                <div class='splide__slide carrousel-card'>
+                                    <img src='{{plansImageUrl}}' alt='{{plansName}}' class='carrousel-card__image' />
+                                    <div class='carrousel-card__texts'>
+                                        <p class='carrousel-card__title'>{{plansName}}</p>
+                                        <p class='carrousel-card__country'>{{plansCountry}}</p>
+                                    </div>
+                                </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    {{/if}}
 
 </main>
+<script src='/scripts/splide.min.js'></script>
+<script src='/scripts/slider.js'></script>

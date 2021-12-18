@@ -3,3 +3,56 @@
 /* Why section*/
 
 /*Plans carrousel*/
+.carrousel-section{
+    background-color: $main_orange;
+    border-radius: 32px;
+    
+    /*Para centrar el contenido en la sección*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 36px;
+
+    /*La sección ocupa el 80% del alto disponible*/
+    height: 80vh;
+
+    & h2{
+        /*Se quita el margin por defecto del título y ocupa el 90% del ancho disponible*/
+        margin: 0;
+        width: 90%;
+    }
+}
+
+.carrousel-card{
+    /*Tarjetas contenedoras de los diferentes planes*/
+    width: 240px; /*Cada card tiene un ancho de 240px*/
+    text-align: center;
+    background-color: $light;
+    border-radius: 16px;
+    overflow: hidden; 
+
+    &__image{
+        /*La imágen ocupa todo el ancho del contenedor*/
+        width: 100%;
+    }
+
+    &__texts{
+        padding: 16px 0;
+    }
+
+    &__title, &__country{
+        margin: 0;
+        padding: 0;
+    }
+
+    &__title{
+        text-transform: uppercase;
+    }
+
+    &__country{
+        color: $soft_text;
+        font-weight: lighter;
+    }
+}

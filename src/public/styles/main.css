@@ -414,6 +414,72 @@ template {
   color: white;
 }
 
+/*Empty file*/
+/*Hero container*/
+/* Why section*/
+/*Plans carrousel*/
+.carrousel-section {
+  background-color: #FF8800;
+  border-radius: 32px;
+  /*Para centrar el contenido en la sección*/
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  gap: 36px;
+  /*La sección ocupa el 80% del alto disponible*/
+  height: 80vh;
+}
+
+.carrousel-section h2 {
+  /*Se quita el margin por defecto del título y ocupa el 90% del ancho disponible*/
+  margin: 0;
+  width: 90%;
+}
+
+.carrousel-card {
+  /*Tarjetas contenedoras de los diferentes planes*/
+  width: 240px;
+  /*Cada card tiene un ancho de 240px*/
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.carrousel-card__image {
+  /*La imágen ocupa todo el ancho del contenedor*/
+  width: 100%;
+}
+
+.carrousel-card__texts {
+  padding: 16px 0;
+}
+
+.carrousel-card__title, .carrousel-card__country {
+  margin: 0;
+  padding: 0;
+}
+
+.carrousel-card__title {
+  text-transform: uppercase;
+}
+
+.carrousel-card__country {
+  color: #8D8D8D;
+  font-weight: lighter;
+}
+
 nav {
   height: 60px;
   background-color: #000000;
