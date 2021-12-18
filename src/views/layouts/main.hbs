@@ -1,30 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang='en'>
+    <head>
+        <meta charset='UTF-8' />
+        <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        
+        {{!--Título de las diferentes páginas--}}
+        <title>{{title}}</title>
 
-    {{!--Título de las diferentes páginas--}}
-    <title>{{title}}</title>
+        {{!Favicon}}
+        <link rel='shortcut icon' href='/images/favicon.ico' type='image/x-icon' />
 
-    {{!--Favicon--}}
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+        {{!Google fonts}}
+        <link rel='preconnect' href='https://fonts.googleapis.com' />
+        <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+        <link
+            href='https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,500;1,900&display=swap'
+            rel='stylesheet'
+        />
 
-    {{!--Google fonts--}}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,500;1,900&display=swap" rel="stylesheet">
+        {{!Custom css styles}}
+        <link rel='stylesheet' href='/styles/main.css' />
 
-    {{!--Custom css styles--}}
-    <link rel="stylesheet" href="/styles/main.css">
+        {{!--Estilos propios de las diferentes páginas (en caso de que existan) --}}
+        {{{customStyles}}}
+    </head>
+    <body>
 
-    {{!--Estilos propios de las diferentes páginas (en caso de que existan) --}}
-    {{{customStyles}}}
-</head>
-<body>
-    
-    {{{body}}}
+        {{! Navbar }}
+        <nav>
+            <a href="/" class="nav__brand"><img src="/images/brand_logo.png" alt="Brand logo" class="nav__logo"> BRAND NAME</a>
 
-</body>
+            <div class="nav__options">
+                <ul class="nav__navigation">
+                    <li><a href="#" class="btn btn__nav">HOME</a></li>
+                    <li><a href="#" class="btn btn__nav">OUR PLANS</a></li>
+                    <li><a href="#" class="btn btn__nav">LOGIN</a></li>
+                    <li><a href="#" class="btn btn__primary">SIGN-UP</a></li>
+                </ul>
+
+                <!-- Menú para celulares -->
+                <div class="nav__toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+
+        {{{body}}}
+
+        <!-- Script de la barra de navegación -->
+        <script src="/scripts/navbar.js"></script>
+        <script src="https://kit.fontawesome.com/5023e2a492.js" crossorigin="anonymous"></script>
+
+        {{! Footer }}
+
+    </body>
 </html>
