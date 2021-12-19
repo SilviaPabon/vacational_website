@@ -72,6 +72,10 @@
     &--orange{
         color: $main_orange;
     }
+
+    &--black {
+        color : $dark;
+    }
 }
 
 .title{
@@ -81,5 +85,21 @@
 
     &--orange{
         color: $main_orange; 
+    }
+}
+
+/* para textos normales */
+.parr{
+    font-size: $lg;
+    font-weight: lighter;
+
+    /* modificadores */
+
+    &--black {
+        color : $dark;
+    }
+
+    &--orange {
+        color : $main-orange;
     }
 }
