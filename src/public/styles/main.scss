@@ -2,6 +2,7 @@
 @import './vendors/normalize';
 @import './components/components';
 @import './layouts/navbar';
+@import './layouts/footer';
 @import './pages/home';
 @import './pages/planDetails';
 
@@ -128,7 +129,13 @@ body {
         }
     
         & .btn--hero {
-            font-size: $sm;
+            font-size: $md;
         }
+    }
+
+    .footer__authors {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
     }
 } ;
