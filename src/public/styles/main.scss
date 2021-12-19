@@ -120,15 +120,15 @@ body {
         & h1{
             /*Se quita el margin por defecto del título*/
             margin: 0;
-            font-size: 26px;
+            font-size: $lg;
         }
     
         & p {
-            font-size: 14px;
+            font-size: $md;
         }
     
         & .btn--hero {
-            font-size: 16px;
+            font-size: $sm;
         }
     }
 } ;
