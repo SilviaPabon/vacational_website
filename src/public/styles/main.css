@@ -639,7 +639,7 @@ nav .nav__navigation a {
 /*Plans carrousel*/
 .carrousel-section {
   background-color: #FF8800;
-  border-radius: 32px;
+  border-radius: 16px;
   /*Para centrar el contenido en la sección*/
   display: -webkit-box;
   display: -ms-flexbox;
@@ -657,7 +657,9 @@ nav .nav__navigation a {
   text-align: center;
   gap: 36px;
   /*La sección ocupa el 80% del alto disponible*/
-  height: 80vh;
+  min-height: 80vh;
+  padding: 16px 0;
+  margin: 16px 0;
 }
 
 .carrousel-section h2 {
