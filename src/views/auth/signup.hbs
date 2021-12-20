@@ -1,0 +1,32 @@
+<div class="container container--100vh">
+
+    <div class="grid-12 container--rounded">
+        <div class="form-container">
+            <h2>SIGNUP</h2>
+            <form action="/signup" method="post">
+                <div class="form-group">
+                    <label for="fullname" class="subtitle--orange">Fullname</label>
+                    <input type="text" name="fullname" id="fullname" placeholder="Your fullname here" class="input" autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="fullname" class="subtitle--orange">Username</label>
+                    <input type="text" name="username" id="username" placeholder="Your username here" class="input">
+                </div>
+                <div class="form-group">
+                    <label for="fullname" class="subtitle--orange">Password</label>
+                    <input type="password" name="password" id="password" placeholder="***********" class="input">
+                </div>
+                <div class="form-group">
+                    <p class="parr parr--black">Already has an account? <a href="/signin" class="parr--orange">Login</a></p>
+                    <button class="btn btn__primary">
+                        CREATE MY ACCOUNT
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="auth-img">
+            <img src="/images/login_vector.svg" alt="image of signup">
+        </div>
+    </div>
+
+</div>
