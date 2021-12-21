@@ -10,7 +10,9 @@
         "layouts/_footer.scss",
         "pages/_home.scss",
         "pages/_planDetails.scss",
+        "layouts/_alerts.scss"
         "pages/_auth.scss"
+
     ],
     "names": [],
     "file": "main.css"

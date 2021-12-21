@@ -5,7 +5,9 @@
 @import './layouts/footer';
 @import './pages/home';
 @import './pages/planDetails';
+@import './layouts/_alerts'; 
 @import './pages/auth';
+
 
 body {
     font-family: $roboto;

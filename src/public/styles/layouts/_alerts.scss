@@ -1,0 +1,56 @@
+/* 
+ESTRUCTURA HTML
+<div class="alert alert--info">
+    <button class="alert__close">
+        <i class="fas fa-times"></i>
+    </button>
+
+    <p class="alert__message">Tienes que iniciar sesión antes de poder acceder a esta página</p>
+</div>
+*/
+
+.alert {
+    width: 80%;
+    max-width: 1200px;
+    margin: 16px auto;
+    position: relative;
+    padding: 16px;
+    background-color: white;
+    transition: all 0.4s ease;
+
+    /*Modificadores*/
+    &--ward {
+        /*Alerta roja*/
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+    }
+
+    &--success {
+        /*Alerta verde*/
+        background-color: #d4edda;
+        border: 1px solid #c3e6cb;
+    }
+
+    &--info {
+        /*Alerta azul*/
+        background-color: #cce5ff;
+        border: 1px solid #b8daff;
+    }
+
+    /*Estilos del símbolo de cerrar*/
+    &__close {
+        border: transparent;
+        position: absolute;
+        top: 4;
+        right: 4;
+        padding: 6px;
+        background-color: rgb(224, 224, 224);
+        border: 1px solid rgb(187, 187, 187);
+        border-radius: 4px;
+    }
+
+    /*Mensaje de la alerta*/
+    &__message{
+        font-size: $md;
+    }
+}
