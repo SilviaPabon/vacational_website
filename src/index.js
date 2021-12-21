@@ -2,12 +2,9 @@ const express = require('express');
 const path = require('path'); 
 const morgan = require('morgan');
 const expressHbs = require('express-handlebars');
-const bcrypt = require('bcryptjs'); 
+const flash = require('connect-flash');
 
 const session = require('express-session');
-const salt1 = bcrypt.genSaltSync();
-const salt2 = bcrypt.genSaltSync();
-const secret = bcrypt.hashSync(salt1 + salt2, 10);
 require('dotenv').config();
 const MySQLStore = require('express-mysql-session');
 const {database} = require('./database/keys');
@@ -18,12 +15,12 @@ require('./libs/passport');
 
 //Middlewares
 app.use(session({
-    secret: secret,
+    secret: process.env.SE_SECRET,
     resave: false,
     saveUninitialized: false,
     store: new MySQLStore(database)
 }));
-
+app.use(flash());
 app.use(morgan('dev')); 
 app.use(
     express.urlencoded({
@@ -65,5 +62,5 @@ app.use('/user', router.user);
 
 //Starting the server
 app.listen(app.get('port'), ()=> {
-    console.log(`Server listening on port ${app.get('port')}`); 
+    console.log(`Server listening on port ${app.get('port')}`);
 }); 
