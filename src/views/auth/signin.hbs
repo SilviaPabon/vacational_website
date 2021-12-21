@@ -2,12 +2,8 @@
 
     <div class="grid-12 container--rounded">
         <div class="form-container">
-            <h2>SIGNUP</h2>
-            <form action="/users/signup" method="post">
-                <div class="form-group">
-                    <label for="fullname" class="subtitle--orange">Fullname</label>
-                    <input type="text" name="usersFullname" id="fullname" placeholder="Your fullname here" class="input" required pattern="[A-Za-z0-9]{1,20}">
-                </div>
+            <h2>SIGN IN</h2>
+            <form action="/users/signin" method="post">
                 <div class="form-group">
                     <label for="username" class="subtitle--orange">Username</label>
                     <input type="text" name="username" id="username" placeholder="Your username here" class="input">
@@ -17,9 +13,9 @@
                     <input type="password" name="password" id="password" placeholder="***********" class="input">
                 </div>
                 <div class="form-group">
-                    <p class="parr parr--black">Already has an account? <a href="/users/signin" class="parr--orange">Login</a></p>
+                    <p class="parr parr--black">Doesn't have an account? <a href="/users/signup/" class="parr--orange">SignUp</a></p>
                     <button class="btn btn__primary">
-                        CREATE MY ACCOUNT
+                        LOG INTO MY ACCOUNT
                     </button>
                 </div>
             </form>

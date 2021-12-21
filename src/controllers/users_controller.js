@@ -13,6 +13,10 @@ controller.signupPost =  passport.authenticate('local.signup', {
     successRedirect: '/user/dashboard',
     failureRedirect: '/users/signup',
     failureFlash: true
-}); 
+});
+
+controller.signin = (req, res) => {
+    res.render('auth/signin');
+};
 
 module.exports = controller; 
