@@ -836,6 +836,63 @@ nav .nav__navigation a {
   color: #8D8D8D;
 }
 
+/* 
+ESTRUCTURA HTML
+<div class="alert alert--info">
+    <button class="alert__close">
+        <i class="fas fa-times"></i>
+    </button>
+
+    <p class="alert__message">Tienes que iniciar sesión antes de poder acceder a esta página</p>
+</div>
+*/
+.alert {
+  width: 80%;
+  max-width: 1200px;
+  margin: 16px auto;
+  position: relative;
+  padding: 16px;
+  background-color: white;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  /*Modificadores*/
+  /*Estilos del símbolo de cerrar*/
+  /*Mensaje de la alerta*/
+}
+
+.alert--ward {
+  /*Alerta roja*/
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+.alert--success {
+  /*Alerta verde*/
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+.alert--info {
+  /*Alerta azul*/
+  background-color: #cce5ff;
+  border: 1px solid #b8daff;
+}
+
+.alert__close {
+  border: transparent;
+  position: absolute;
+  top: 4;
+  right: 4;
+  padding: 6px;
+  background-color: #e0e0e0;
+  border: 1px solid #bbbbbb;
+  border-radius: 4px;
+}
+
+.alert__message {
+  font-size: 16px;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   background: #FAFAFA;
@@ -955,7 +1012,6 @@ body {
         -ms-flex-align: center;
             align-items: center;
     gap: 0;
-    font-size: 12px;
   }
 }
 /*# sourceMappingURL=main.css.map */
