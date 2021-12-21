@@ -1,5 +1,5 @@
 module.exports = {
-    //info con la que me conecto
+
     database : {
         host: process.env.DB_HOST,
         user: process.env.DB_USER,
