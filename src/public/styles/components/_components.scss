@@ -7,11 +7,8 @@
     margin: 16px auto;
 
     &--100vh{
-        /* se restan 210px por el footer */
-        min-height: calc(100vh - 210px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        /* se restan 208px por el footer y la nav */
+        min-height: calc(100vh - 208px);
     }
 
     &--rounded {
@@ -20,6 +17,12 @@
         border: 1px solid $input_placeholder;
         padding: 20px;
         box-shadow: 4px 4px 12px $input_placeholder;
+    }
+
+    &--contentCenter{
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -126,4 +129,43 @@
     border: 1px solid $input_placeholder;
     background: $background_grey;
     padding: 8px;
+}
+
+/*Contenedor y cards para los dashboards (reutilizables)*/
+.dashboard__container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.dashboard__card{
+    box-sizing: border-box;
+
+    /*Cada tarjeta mide el 30% de la pantalla, pero no puede medir menos de 240px*/
+    width: 30%;
+    min-width: 240px; 
+
+    padding: 12px;
+
+    border: 1px solid rgb(233, 233, 233);
+    background-color: $light;
+    border-radius: 8px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    box-shadow: 0;
+    transition: all .3s ease;
+
+    /*El ancho de la imágen de la card es del 100%*/
+    & img{
+        width: 80%;
+    }
+}
+
+.dashboard__card:hover{
+    transform: translate(1%, -1%);
+    box-shadow: -4px 4px 12px rgb(233, 233, 233);
 }

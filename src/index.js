@@ -56,7 +56,7 @@ app.set('view engine', '.hbs');
 app.use((req, res, next) => {
     app.locals.success = req.flash('success'); 
     app.locals.message = req.flash('message');
-    //app.locals.user = req.user;
+    app.locals.user = req.user;
     next();
 });
 
@@ -66,6 +66,7 @@ app.use('/users', router.authentication);
 app.use('/plans', router.plans); 
 app.use('/', router.generalRoutes); 
 app.use('/user', router.user); 
+app.use('/admin', router.admin); 
 
 
 //Starting the server
