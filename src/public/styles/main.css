@@ -461,6 +461,10 @@ template {
   color: #8D8D8D;
 }
 
+.subtitle--red {
+  color: red;
+}
+
 .title {
   font-size: 20px;
   text-transform: uppercase;

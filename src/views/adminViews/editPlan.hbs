@@ -1,0 +1,97 @@
+{{#if plan}}
+
+<div class="container container--100vh container--contentCenter">
+
+    <div class="container--rounded plan-form">
+        
+        <h2 class="subtitle">EDIT EXISTING PLAN</h2>
+
+        <form action="/admin/plans/modify/{{plan.plansId}}" method="post">
+
+            {{!--La primer parte del formulario es el overview y la imágen--}}
+            <div class="plan-form-overview grid-12">
+
+                <div class="plan-form-overview__inputs">
+                    <div class="form-group">
+                        <label for="name" class="subtitle--orange">Plan name</label>
+                        <input type="text" name="plansName" id="name" value="{{plan.plansName}}" class="input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description" class="subtitle--orange">Plan description</label>
+                        <textarea name="plansDescription" id="description" class="input input-area">{{plan.plansDescription}}</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country" class="subtitle--orange">Destination country</label>
+                        <input type="text" name="plansCountry" id="country" value="{{plan.plansCountry}}" class="input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price" class="subtitle--orange">Price</label>
+                        <input type="number" name="plansPrice" id="price" value="{{plan.plansPrice}}" class="input">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image" class="subtitle--orange">Fullname</label>
+                        <input type="url" name="plansImageUrl" id="image" value="{{plan.plansImageUrl}}" class="input">
+                    </div>
+                </div>
+
+                <div class="plan-form-overview__image">
+                    <img src="/images/vectors/add_plan.png" alt="Add plan image" class="">
+                </div>
+
+            </div>
+
+            <h2 class="subtitle subtitle--red">*You must re-select yes/no options*</h2>
+            {{!--La segunda parte del formulario son los detalles específicos--}}
+            <div class="plan-form-specific">
+
+                <div class="form-group">
+                    <label for="hotel" class="subtitle--orange">Hotel included</label>
+                    <select name="plansIncludeHotel" id="hotel" class="input input--auto-width">
+                        <option value="1">Yes</option>
+                        <option value="0" selected>No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="flights" class="subtitle--orange">Flights included</label>
+                    <select name="plansIncludeFlights" id="flights" class="input input--auto-width">
+                        <option value="1">Yes</option>
+                        <option value="0" selected>No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="activities" class="subtitle--orange">Planned activities</label>
+                    <select name="plansIncludeActivities" id="activities" class="input input--auto-width">
+                        <option value="1">Yes</option>
+                        <option value="0" selected>No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="persons" class="subtitle--orange">Number of persons</label>
+                    <input type="number" name="plansNumPersons" id="persons" value="{{plan.plansNumPersons}}" class="input input--auto-width">
+                </div>
+                    
+
+                <div class="form-group">
+                    <label for="days" class="subtitle--orange">Days</label>
+                    <input type="number" name="plansDays" id="days" value="{{plan.plansDays}}" class="input input--auto-width">
+                </div>
+
+            </div>
+
+            <div class="form_group">
+                <button type="submit" class="btn btn__primary">Update plan</button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+{{/if}}

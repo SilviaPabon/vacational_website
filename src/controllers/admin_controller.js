@@ -76,19 +76,6 @@ controller.addPlanPost = async (req, res) => {
         plansDays,
     };
 
-    //Parse the fields that require it
-    const parse = (planObject) => {
-        //El precio se pasa de string a float
-        planObject.plansPrice = parseFloat(planObject.plansPrice);
-
-        //Los datos booleanos se pasan de string a bool
-        planObject.plansIncludeHotel = planObject.plansIncludeHotel == '0' ? false : true;
-        planObject.plansIncludeFlights = planObject.plansIncludeFlights == '0' ? false : true;
-        planObject.plansIncludeActivities = planObject.plansIncludeActivities == '0' ? false : true;
-    };
-
-    parse(newObject);
-
     //Teniendo el nuevo objeto parseado, se agrega a la BD
     await pool.query('INSERT INTO PLANS SET ?', [newObject]);
 
@@ -112,5 +99,60 @@ controller.removePlan = async (req, res) => {
         res.redirect('/admin/plans');
     }
 };
+
+controller.editPlan = async (req, res) => {
+
+    const { id } = req.params; 
+
+    //Se seleccionan los datos actuales del plan desde la BD
+    const plan = await pool.query('SELECT * FROM PLANS WHERE plansId = ?', [id]); 
+
+    const handlebarsObject = {
+        title: 'Admin :: Edit plan',
+        plan: plan[0]
+    };
+
+    res.render('adminViews/editPlan', handlebarsObject);
+};
+
+controller.updatePlan =  async (req, res) => {
+
+    const { id } = req.params;  
+    
+    //Get data from req.body
+    const {
+        plansName,
+        plansDescription,
+        plansCountry,
+        plansPrice,
+        plansImageUrl,
+        plansIncludeHotel,
+        plansIncludeFlights,
+        plansIncludeActivities,
+        plansNumPersons,
+        plansDays,
+    } = req.body;
+
+    //Create new plan object
+    const updatedPlan = {
+        plansName,
+        plansDescription,
+        plansCountry,
+        plansPrice,
+        plansImageUrl,
+        plansIncludeHotel,
+        plansIncludeFlights,
+        plansIncludeActivities,
+        plansNumPersons,
+        plansDays,
+    };
+
+    //Update it into DB
+    await pool.query('UPDATE PLANS SET ? WHERE plansId = ?', [updatedPlan, id]); 
+
+    req.flash('success', 'El plan fue editado satisfactoriamente'); 
+    res.redirect('/admin/plans'); 
+};
+
 
 module.exports = controller;
