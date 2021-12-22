@@ -6,8 +6,6 @@
 @import './pages/home';
 @import './pages/planDetails';
 @import './layouts/_alerts'; 
-@import './pages/auth';
-
 
 body {
     font-family: $roboto;
@@ -71,19 +69,6 @@ body {
         & .btn--hero {
             font-size: 18px;
         }
-    }
-
-    .form-container {
-        grid-column: 1/-1;
-    }
-    
-    .auth-img {
-        grid-column: 1/-1;
-        grid-row: 1;
-    }
-
-    .input {
-        width: 100%;
     }
 }
 
