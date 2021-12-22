@@ -1,5 +1,4 @@
 const pool = require('../database/database');  
-const keys = require('../database/keys');
 
 module.exports = {
 

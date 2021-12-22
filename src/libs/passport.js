@@ -57,6 +57,47 @@ passport.use('local.signup', new LocalStrategy({
     return done(null, newUser); 
 }));
 
+// ######################
+//Signup ADMIN
+// ######################
+passport.use('local.adminSignup', new LocalStrategy({
+    usernameField: 'username',
+    passwordField: 'password',
+    passReqToCallback: true
+
+}, async (req, usersUsername, usersPassword, done) => {
+
+    //Desde el req.body se reciben dos datos extra, el fullname y el rol
+    const {usersFullname, roleId} = req.body;
+
+    const newUser = {
+        usersUsername,
+        usersPassword,
+        usersFullname
+    };
+
+    console.log(roleId); 
+
+    newUser.usersPassword = await helpers.encryptPassword(usersPassword);
+
+    /*Se inserta el usuario en la BD*/
+    const result = await pool.query('INSERT INTO USERS SET ?', [newUser]);
+    newUser.usersId = result.insertId; 
+
+    /*Se inserta el rol, siempre será user si se crea desde esta vista*/
+    const userRole = {
+        userId: result.insertId,
+        /*Ahora el roleId puede variar, según lo que se ingresó*/
+        roleId
+    }; 
+
+    /*Se inserta el rol del usuario en la BD*/
+    await pool.query('INSERT INTO usersHasRoles SET ?', [userRole]); 
+
+    /*El usuario sigue siendo el mismo de req.user*/
+    return done(null, req.user); 
+}));
+
 passport.serializeUser((usr, done) => {
     done(null, usr.usersId);
 });
