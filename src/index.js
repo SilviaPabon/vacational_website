@@ -52,6 +52,14 @@ app.set('view engine', '.hbs');
 //Static files
 app.use(express.static(path.join(__dirname, 'public')));    //Ruta a los archivos estáticos de la aplicación
 
+//global variables for watch messages in other views
+app.use((req, res, next) => {
+    app.locals.success = req.flash('success'); 
+    app.locals.message = req.flash('message');
+    //app.locals.user = req.user;
+    next();
+});
+
 //Routes
 const router = require('./routes/router.js'); 
 app.use('/users', router.authentication); 
