@@ -2,8 +2,12 @@
 
     <div class="grid-12 container--rounded">
         <div class="form-container">
-            <h2>SIGN IN</h2>
-            <form action="/users/signin" method="post">
+            <h2>ADMIN CREATE ACCOUNT</h2>
+            <form action="/admin/createAccount" method="post" id="form">
+                <div class="form-group">
+                    <label for="fullname" class="subtitle--orange">Fullname</label>
+                    <input type="text" name="usersFullname" id="fullname" placeholder="Your fullname here" class="input">
+                </div>
                 <div class="form-group">
                     <label for="username" class="subtitle--orange">Username</label>
                     <input type="text" name="username" id="username" placeholder="Your username here" class="input">
@@ -13,9 +17,15 @@
                     <input type="password" name="password" id="password" placeholder="***********" class="input">
                 </div>
                 <div class="form-group">
-                    <p class="parr parr--black">Doesn't have an account? <a href="/users/signup/" class="parr--orange">SignUp</a></p>
+                    <label for="roleId" class="subtitle--orange">Account role</label>
+                    <select name="roleId" id="roleId" class="input">
+                        <option value="1">1 (Admin)</option>
+                        <option value="2" selected>2 (User)</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <button class="btn btn__primary">
-                        LOG INTO MY ACCOUNT
+                        CREATE THE ACCOUNT
                     </button>
                 </div>
             </form>
@@ -26,3 +36,5 @@
     </div>
 
 </div>
+
+{{!-- <script src="/scripts/auth/signup.js"></script> --}}

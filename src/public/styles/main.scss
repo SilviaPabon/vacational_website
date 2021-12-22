@@ -3,9 +3,9 @@
 @import './components/components';
 @import './layouts/navbar';
 @import './layouts/footer';
+@import './layouts/_alerts'; 
 @import './pages/home';
 @import './pages/planDetails';
-@import './layouts/_alerts'; 
 @import './pages/auth';
 
 
@@ -56,6 +56,14 @@ body {
 
 @media (max-width: 768px) {
 
+    .container--100vh{
+        /*En celulares se debe restar más ya que el footer se re-acomoda*/
+        min-height: calc(100vh - 260px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .hero-content {
         width: 60%;
         & h1{
@@ -93,7 +101,7 @@ body {
     $sm: 12px;
     $md: 14px;
     $lg: 16px;
-    $x_lg: 28px;
+    $x_lg: 18px;
 
     /*Celulares*/
     nav {
@@ -153,5 +161,9 @@ body {
         flex-direction: column;
         align-items: center;
         gap: 0;
+    }
+
+    .dashboard__container{
+        justify-content: center
     }
 } ;
