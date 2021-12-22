@@ -5,6 +5,22 @@
     width: 80%;
     max-width: 1200px;
     margin: 16px auto;
+
+    &--100vh{
+        /* se restan 210px por el footer */
+        min-height: calc(100vh - 210px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &--rounded {
+        background: $light;
+        border-radius: 24px;
+        border: 1px solid $input_placeholder;
+        padding: 20px;
+        box-shadow: 4px 4px 12px $input_placeholder;
+    }
 }
 
 .grid-12{
@@ -102,4 +118,12 @@
     &--orange {
         color : $main-orange;
     }
+}
+/* cajas de input */
+.input {
+    width: 80%;
+    border-radius: 12px;
+    border: 1px solid $input_placeholder;
+    background: $background_grey;
+    padding: 8px;
 }
