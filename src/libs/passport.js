@@ -16,7 +16,6 @@ passport.use('local.signin', new LocalStrategy({
         const user = rows[0];
         const validPassword = await helpers.matchPassword(password, user.usersPassword);
         if (validPassword){
-            console.log('loggeado');
             done(null, user, req.flash('success', 'Welcome ' + user.usersUsername));
         } else {
             done(null, false, req.flash('message','Incorrect password')); //false xq no se puede mostrar
@@ -41,8 +40,20 @@ passport.use('local.signup', new LocalStrategy({
     };
 
     newUser.usersPassword = await helpers.encryptPassword(usersPassword);
+
+    /*Se inserta el usuario en la BD*/
     const result = await pool.query('INSERT INTO USERS SET ?', [newUser]);
     newUser.usersId = result.insertId; 
+
+    /*Se inserta el rol, siempre será user si se crea desde esta vista*/
+    const userRole = {
+        userId: result.insertId,
+        roleId: 2,
+    }; 
+
+    /*Se inserta el rol del usuario en la BD*/
+    await pool.query('INSERT INTO usersHasRoles SET ?', [userRole]); 
+
     return done(null, newUser); 
 }));
 
