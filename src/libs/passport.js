@@ -2,7 +2,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 const pool = require('../database/database'); //cambiar la base de datos
-const helpers = require('../libs/helpers');
+const helpers = require('./helpers');
 
 //signin
 passport.use('local.signin', new LocalStrategy({
