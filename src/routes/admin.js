@@ -10,7 +10,11 @@ router.get('/createAccount', protectFunctions.isLoggedIn, protectFunctions.isAdm
 router.post('/createAccount', protectFunctions.isLoggedIn, protectFunctions.isAdmin, controller.createAccountPost);
 
 router.get('/plans', protectFunctions.isLoggedIn, protectFunctions.isAdmin, controller.plans); 
+
 router.get('/plans/add', protectFunctions.isLoggedIn, protectFunctions.isAdmin, controller.addPlan); 
 router.post('/plans/add', protectFunctions.isLoggedIn, protectFunctions.isAdmin, controller.addPlanPost); 
+
+router.get('/plans/delete/:id', protectFunctions.isLoggedIn, protectFunctions.isAdmin, controller.removePlan); 
+
 
 module.exports = router; 

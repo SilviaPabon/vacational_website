@@ -47,7 +47,7 @@ controller.addPlan = (req, res) => {
     res.render('adminViews/createPlan', handlebarsObject);
 };
 
-controller.addPlanPost = async(req, res) => {
+controller.addPlanPost = async (req, res) => {
     //Get data from req.body
     const {
         plansName,
@@ -88,12 +88,29 @@ controller.addPlanPost = async(req, res) => {
     };
 
     parse(newObject);
-    
+
     //Teniendo el nuevo objeto parseado, se agrega a la BD
-    await pool.query('INSERT INTO PLANS SET ?', [newObject]); 
+    await pool.query('INSERT INTO PLANS SET ?', [newObject]);
 
     //Una vez inserta el dato, lo redirije a la vista de todos los planes
-    res.redirect('/admin/plans'); 
+    res.redirect('/admin/plans');
+};
+
+controller.removePlan = async (req, res) => {
+    //Se obtiene el id de la ruta
+    const { id } = req.params;
+
+    //Intenta eliminar el id dado
+    const result = await pool.query('DELETE FROM PLANS WHERE plansId = ?', [id]);
+
+    if (result['affectedRows'] == 0) {
+        req.flash('message', `El plan con el id ${id} no existe`); 
+        res.redirect('/admin/plans');
+    } else {
+        //SE manda el flash para indicar que se eliminó correctamente
+        req.flash('success', 'El plan se eliminó corectamente');
+        res.redirect('/admin/plans');
+    }
 };
 
 module.exports = controller;

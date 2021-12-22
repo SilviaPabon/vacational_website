@@ -16,8 +16,8 @@
 
                     <div class="admins-plans-card__body">
                         <p class="parr">Actions</p>
-                        <a href="/user/plans/modify/{{plansId}}" class="btn btn__primary_transparent">Modify</a>
-                        <a href="/user/plans/delete/{{plansId}}" class="btn btn__danger">Remove</a>
+                        <a href="/admin/plans/modify/{{plansId}}" class="btn btn__primary_transparent">Modify</a>
+                        <a href="/admin/plans/delete/{{plansId}}" class="btn btn__danger" id="deletePlan">Remove</a>
                     </div>
                 </article>
                 
@@ -26,3 +26,5 @@
         {{/if}}
     </div>
 </div>
+
+<script src="/scripts/plans_confirm_delete.js"></script>
