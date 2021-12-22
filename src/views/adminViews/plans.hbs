@@ -1,7 +1,7 @@
 <div class='container container--100vh'>
 
     <h1 class="title">Plans Management</h1>
-    <a href="#" class="btn btn__primary">Add a new plan</a>
+    <a href="/admin/plans/add" class="btn btn__primary">Add a new plan</a>
 
     <div class='admin-plans-container'>
         {{#if plansData}}
@@ -16,8 +16,8 @@
 
                     <div class="admins-plans-card__body">
                         <p class="parr">Actions</p>
-                        <a href="#" class="btn btn__primary_transparent">Modify</a>
-                        <a href="#" class="btn btn__danger">Remove</a>
+                        <a href="/user/plans/modify/{{plansId}}" class="btn btn__primary_transparent">Modify</a>
+                        <a href="/user/plans/delete/{{plansId}}" class="btn btn__danger">Remove</a>
                     </div>
                 </article>
                 

@@ -29,31 +29,71 @@ controller.createAccountPost = passport.authenticate('local.adminSignup', {
 
 // ############ PLANS
 controller.plans = async (req, res) => {
-
     const plans = await pool.query('SELECT * FROM PLANS');
 
     const handlebarsObject = {
         title: 'Admin :: Plans Management',
-        plansData: plans
+        plansData: plans,
     };
 
-    res.render('adminViews/plans', handlebarsObject); 
-}; 
+    res.render('adminViews/plans', handlebarsObject);
+};
 
 controller.addPlan = (req, res) => {
-
     const handlebarsObject = {
         title: 'Admin :: Create plan',
     };
 
-    res.render('adminViews/createPlan', handlebarsObject); 
+    res.render('adminViews/createPlan', handlebarsObject);
+};
 
-}; 
+controller.addPlanPost = async(req, res) => {
+    //Get data from req.body
+    const {
+        plansName,
+        plansDescription,
+        plansCountry,
+        plansPrice,
+        plansImageUrl,
+        plansIncludeHotel,
+        plansIncludeFlights,
+        plansIncludeActivities,
+        plansNumPersons,
+        plansDays,
+    } = req.body;
 
-controller.addPlanPost = (req, res) => {
+    //Create new plan object
+    const newObject = {
+        plansName,
+        plansDescription,
+        plansCountry,
+        plansPrice,
+        plansImageUrl,
+        plansIncludeHotel,
+        plansIncludeFlights,
+        plansIncludeActivities,
+        plansNumPersons,
+        plansDays,
+    };
 
-}; 
+    //Parse the fields that require it
+    const parse = (planObject) => {
+        //El precio se pasa de string a float
+        planObject.plansPrice = parseFloat(planObject.plansPrice);
 
+        //Los datos booleanos se pasan de string a bool
+        planObject.plansIncludeHotel = planObject.plansIncludeHotel == '0' ? false : true;
+        planObject.plansIncludeFlights = planObject.plansIncludeFlights == '0' ? false : true;
+        planObject.plansIncludeActivities = planObject.plansIncludeActivities == '0' ? false : true;
+    };
 
+    parse(newObject);
+    
+    //Teniendo el nuevo objeto parseado, se agrega a la BD
+    await pool.query('INSERT INTO PLANS SET ?', [newObject]); 
+
+    //Una vez inserta el dato, lo redirije a la vista de todos los planes
+    res.redirect('/admin/plans'); 
+};
 
 module.exports = controller;
