@@ -1,37 +1,44 @@
-const passport = require("passport");
+const passport = require('passport');
+const pool = require('../database/database');
 
-const controller = {}; 
-/* const passport = require('passport'); */
+const controller = {};
 
+// ############# DASHBOARD
 controller.dashboard = (req, res) => {
-
     const handlebarsObject = {
         title: 'Admin Dashboard',
     };
 
-    res.render('adminViews/dashboard', handlebarsObject); 
+    res.render('adminViews/dashboard', handlebarsObject);
 };
 
+// ############ CREATE ACCOUNT
 controller.createAccount = (req, res) => {
-
     const handlebarsObject = {
         title: 'Admin Create Account',
     };
 
-    res.render('auth/signup_admin', handlebarsObject); 
-
-}; 
+    res.render('auth/signup_admin', handlebarsObject);
+};
 
 controller.createAccountPost = passport.authenticate('local.adminSignup', {
-    successRedirect: '/admin/dashboard', 
-    failureRedirect: '/admin/createAccount', 
-    failureFlash: true
-});  
+    successRedirect: '/admin/dashboard',
+    failureRedirect: '/admin/createAccount',
+    failureFlash: true,
+});
 
-/* controller.signupPost =  passport.authenticate('local.signup', {
-    successRedirect: '/user/dashboard',
-    failureRedirect: '/users/signup',
-    failureFlash: true
-}); */
+// ############ PLANS
+controller.plans = async (req, res) => {
 
-module.exports = controller; 
+    const plans = await pool.query('SELECT * FROM PLANS');
+
+    const handlebarsObject = {
+        title: 'Admin Plans Management',
+        plansData: plans
+    };
+
+    res.render('adminViews/plans', handlebarsObject); 
+}; 
+
+
+module.exports = controller;

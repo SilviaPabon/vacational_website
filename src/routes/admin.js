@@ -7,6 +7,8 @@ const protectFunctions = require('../libs/protect_functions');
 router.get('/dashboard', protectFunctions.isLoggedIn, protectFunctions.isAdmin, controller.dashboard); 
 
 router.get('/createAccount', protectFunctions.isLoggedIn, protectFunctions.isAdmin, controller.createAccount); 
-router.post('/createAccount', protectFunctions.isLoggedIn, protectFunctions.isAdmin, controller.createAccountPost); 
+router.post('/createAccount', protectFunctions.isLoggedIn, protectFunctions.isAdmin, controller.createAccountPost);
+
+router.get('/plans', protectFunctions.isLoggedIn, protectFunctions.isAdmin, controller.plans); 
 
 module.exports = router; 

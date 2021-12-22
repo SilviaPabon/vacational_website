@@ -95,12 +95,17 @@
     &--black {
         color : $dark;
     }
+
+    &--grey{
+        color: $soft_text; 
+    }
 }
 
 .title{
     font-size: $x_lg;
     text-transform: uppercase;
     font-weight: bold;
+    margin: 24px 0;
 
     &--orange{
         color: $main_orange; 

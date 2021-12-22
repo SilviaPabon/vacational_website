@@ -7,6 +7,7 @@
 @import './pages/home';
 @import './pages/planDetails';
 @import './pages/auth';
+@import './pages/adminPlans'; 
 
 
 body {
@@ -59,9 +60,6 @@ body {
     .container--100vh{
         /*En celulares se debe restar más ya que el footer se re-acomoda*/
         min-height: calc(100vh - 260px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
 
     .hero-content {
