@@ -1,0 +1,41 @@
+.plan-form {
+    width: 100%;
+}
+
+.plan-form-overview__inputs {
+    grid-column: 1/6;
+
+    & .form-group {
+        margin: 8px 0;
+    }
+
+    & label {
+        display: block;
+        margin-bottom: 8px;
+    }
+}
+
+.plan-form-overview__image {
+    grid-column: 6/-1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & img{
+        width: 60%;
+    }
+}
+
+.plan-form-specific {
+
+    margin: 16px 0;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    & label {
+        display: block;
+        margin-bottom: 8px;
+    }
+}

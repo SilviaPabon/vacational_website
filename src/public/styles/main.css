@@ -496,6 +496,16 @@ template {
   padding: 8px;
 }
 
+.input--auto-width {
+  width: auto;
+}
+
+/*Text areas*/
+.input-area {
+  resize: none;
+  height: 80px;
+}
+
 /*Contenedor y cards para los dashboards (reutilizables)*/
 .dashboard__container {
   display: -webkit-box;
@@ -1048,6 +1058,60 @@ ESTRUCTURA HTML
   border-bottom: 1px solid #ABABAB;
 }
 
+.plan-form {
+  width: 100%;
+}
+
+.plan-form-overview__inputs {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 5;
+  grid-column: 1/6;
+}
+
+.plan-form-overview__inputs .form-group {
+  margin: 8px 0;
+}
+
+.plan-form-overview__inputs label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.plan-form-overview__image {
+  grid-column: 6/-1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.plan-form-overview__image img {
+  width: 60%;
+}
+
+.plan-form-specific {
+  margin: 16px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 16px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.plan-form-specific label {
+  display: block;
+  margin-bottom: 8px;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   background: #FAFAFA;
@@ -1086,6 +1150,17 @@ body {
   .plan__comments {
     grid-column: 1/-1;
   }
+  .plan-form-overview__inputs {
+    grid-column: 1/-1;
+  }
+  .plan-form-overview__image {
+    grid-column: 1/-1;
+    -ms-grid-row: 1;
+    grid-row: 1;
+  }
+  .input {
+    width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1114,9 +1189,6 @@ body {
     grid-column: 1/-1;
     -ms-grid-row: 1;
     grid-row: 1;
-  }
-  .input {
-    width: 100%;
   }
 }
 

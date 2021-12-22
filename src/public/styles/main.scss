@@ -3,12 +3,12 @@
 @import './components/components';
 @import './layouts/navbar';
 @import './layouts/footer';
-@import './layouts/_alerts'; 
+@import './layouts/_alerts';
 @import './pages/home';
 @import './pages/planDetails';
 @import './pages/auth';
-@import './pages/adminPlans'; 
-
+@import './pages/adminPlans';
+@import './pages/adminCreatePlan';
 
 body {
     font-family: $roboto;
@@ -16,19 +16,18 @@ body {
 }
 
 @media (max-width: 1400px) {
-
     .hero-content {
         width: 60%;
-        & h1{
+        & h1 {
             /*Se quita el margin por defecto del título*/
             margin: 0;
             font-size: 36px;
         }
-    
+
         & p {
             font-size: 26px;
         }
-    
+
         & .btn--hero {
             font-size: 22px;
         }
@@ -53,27 +52,39 @@ body {
     .plan__comments {
         grid-column: 1/-1;
     }
+
+    .plan-form-overview__inputs {
+        grid-column: 1/-1;
+    }
+
+    .plan-form-overview__image {
+        grid-column: 1/-1;
+        grid-row: 1;
+    }
+
+    .input {
+        width: 100%;
+    }
 }
 
 @media (max-width: 768px) {
-
-    .container--100vh{
+    .container--100vh {
         /*En celulares se debe restar más ya que el footer se re-acomoda*/
         min-height: calc(100vh - 260px);
     }
 
     .hero-content {
         width: 60%;
-        & h1{
+        & h1 {
             /*Se quita el margin por defecto del título*/
             margin: 0;
             font-size: 28px;
         }
-    
+
         & p {
             font-size: 20px;
         }
-    
+
         & .btn--hero {
             font-size: 18px;
         }
@@ -82,14 +93,10 @@ body {
     .form-container {
         grid-column: 1/-1;
     }
-    
+
     .auth-img {
         grid-column: 1/-1;
         grid-row: 1;
-    }
-
-    .input {
-        width: 100%;
     }
 }
 
@@ -140,16 +147,16 @@ body {
     }
     /* Hero */
     .hero-content {
-        & h1{
+        & h1 {
             /*Se quita el margin por defecto del título*/
             margin: 0;
             font-size: $lg;
         }
-    
+
         & p {
             font-size: $md;
         }
-    
+
         & .btn--hero {
             font-size: $md;
         }
@@ -161,7 +168,7 @@ body {
         gap: 0;
     }
 
-    .dashboard__container{
-        justify-content: center
+    .dashboard__container {
+        justify-content: center;
     }
 } ;

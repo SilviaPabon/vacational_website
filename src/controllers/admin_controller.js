@@ -6,7 +6,7 @@ const controller = {};
 // ############# DASHBOARD
 controller.dashboard = (req, res) => {
     const handlebarsObject = {
-        title: 'Admin Dashboard',
+        title: 'Admin :: Dashboard',
     };
 
     res.render('adminViews/dashboard', handlebarsObject);
@@ -15,7 +15,7 @@ controller.dashboard = (req, res) => {
 // ############ CREATE ACCOUNT
 controller.createAccount = (req, res) => {
     const handlebarsObject = {
-        title: 'Admin Create Account',
+        title: 'Admin :: Create Account',
     };
 
     res.render('auth/signup_admin', handlebarsObject);
@@ -33,12 +33,27 @@ controller.plans = async (req, res) => {
     const plans = await pool.query('SELECT * FROM PLANS');
 
     const handlebarsObject = {
-        title: 'Admin Plans Management',
+        title: 'Admin :: Plans Management',
         plansData: plans
     };
 
     res.render('adminViews/plans', handlebarsObject); 
 }; 
+
+controller.addPlan = (req, res) => {
+
+    const handlebarsObject = {
+        title: 'Admin :: Create plan',
+    };
+
+    res.render('adminViews/createPlan', handlebarsObject); 
+
+}; 
+
+controller.addPlanPost = (req, res) => {
+
+}; 
+
 
 
 module.exports = controller;

@@ -134,6 +134,17 @@
     border: 1px solid $input_placeholder;
     background: $background_grey;
     padding: 8px;
+
+    &--auto-width{
+        width: auto;
+    }
+
+}
+
+/*Text areas*/
+.input-area{
+    resize: none;
+    height: 80px; 
 }
 
 /*Contenedor y cards para los dashboards (reutilizables)*/
