@@ -3,13 +3,11 @@ const inputs = document.querySelectorAll('#form input'); //access inputs inside 
 
 const expressions = {
     username: /^[a-zA-Z0-9_-]{4,32}$/, // Letras, numeros, guion y guion_bajo
-    fullname: /^[a-zA-ZÀ-ÿ\s]{4,64}$/, // Letras y espacios, pueden llevar acentos.
-    password: /^.{4,24}$/, // 4 a 12 digitos.
+    password: /^.{4,24}$/, // 4 a 24 digitos.
 };
 
 const camps = {
     username: false,
-    fullname: false,
     password: false
 };
 
@@ -17,9 +15,6 @@ const validateForm = (e) => {
     switch (e.target.name) {
     case 'username':
         validateCamp(expressions.username, e.target, 'username');
-        break;
-    case 'usersFullname':
-        validateCamp(expressions.fullname, e.target, 'fullname');
         break;
     case 'password':
         validateCamp(expressions.password, e.target, 'password');
@@ -52,7 +47,7 @@ inputs.forEach((input) => {
 
 form.addEventListener('submit', (e) => {
     
-    if(camps.username && camps.fullname && camps.password){
+    if(camps.username && camps.password){
         this.submit();
         //return;
     } else {
