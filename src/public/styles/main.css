@@ -492,12 +492,77 @@ template {
 }
 
 /* cajas de input */
-.input {
+/* contiene input & icon */
+.form__group-input {
+  /* permite ubicación sencilla de ícono */
+  position: relative;
+}
+
+.form__input {
   width: 80%;
   border-radius: 12px;
-  border: 1px solid #ABABAB;
+  border: 1px solid #EBEBEB;
   background: #FAFAFA;
+  font-size: 14px;
   padding: 8px;
+  -webkit-transition: .3s ease all;
+  transition: .3s ease all;
+}
+
+/* al seleccionar el form__input */
+.form__input:focus {
+  border: 2px solid #FF8800;
+  outline: none;
+  -webkit-box-shadow: 3px 0px 30px #EBEBEB;
+          box-shadow: 3px 0px 30px #EBEBEB;
+}
+
+/* mensaje cuando hay error */
+.form__input-error {
+  font-size: 12px;
+  display: none;
+}
+
+.form__input-error-act {
+  display: block;
+}
+
+.form__icon-vstate {
+  position: absolute;
+  right: 84px;
+  bottom: 10px;
+  z-index: 100;
+  font-size: 14px;
+  opacity: 0;
+}
+
+/* formulario validación */
+.form__group--correct .form__icon-vstate {
+  color: #6be788;
+  opacity: 1;
+}
+
+.form__group--incorrect .form__icon-vstate {
+  color: #fa7782;
+  opacity: 1;
+}
+
+.form__group--incorrect .form__input {
+  border: 2px solid #fa7782;
+}
+
+/* error antes de hacer submit */
+.form__message {
+  font-size: 12px;
+  width: 77%;
+  background: #fa7782;
+  padding: 8px;
+  border-radius: 3px;
+  display: none;
+}
+
+.form__message--act {
+  display: block;
 }
 
 .input--auto-width {
@@ -1009,6 +1074,7 @@ ESTRUCTURA HTML
 .form-container label {
   display: block;
   margin-bottom: 8px;
+  margin-top: 8px;
 }
 
 .auth-img {
