@@ -505,8 +505,21 @@ template {
   background: #FAFAFA;
   font-size: 14px;
   padding: 8px;
-  -webkit-transition: .3s ease all;
-  transition: .3s ease all;
+}
+
+.form__input--auto-width {
+  width: auto;
+}
+
+.form__input--textarea {
+  resize: none;
+  min-height: 100px;
+}
+
+/*Text areas*/
+.input-textarea {
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
 }
 
 /* al seleccionar el form__input */
@@ -565,16 +578,6 @@ template {
   display: block;
 }
 
-.input--auto-width {
-  width: auto;
-}
-
-/*Text areas*/
-.input-area {
-  resize: none;
-  height: 80px;
-}
-
 /*Contenedor y cards para los dashboards (reutilizables)*/
 .dashboard__container {
   display: -webkit-box;
@@ -608,8 +611,8 @@ template {
   gap: 8px;
   -webkit-box-shadow: 0;
           box-shadow: 0;
-  -webkit-transition: all .3s ease;
-  transition: all .3s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
   /*El ancho de la imágen de la card es del 100%*/
 }
 
