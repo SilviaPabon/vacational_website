@@ -29,7 +29,12 @@ controller.specificPlan = async (req, res) => {
 
     if (planData != null) {
         //Si existe el plan, busca también los comentarios y envía toda la información a Handlebars
-        const planComments = await pool.query('SELECT * FROM COMMENTS WHERE plansId = ?', [id]);
+        /* const planComments = await pool.query('SELECT * FROM COMMENTS WHERE plansId = ?', [id]); */
+
+        const planComments = await pool.query(`SELECT COMMENTS.commentsId, COMMENTS.commentsDescription, COMMENTS.commentsDate, USERS.usersFullname
+        FROM COMMENTS, USERS
+        WHERE (COMMENTS.plansId = ? and COMMENTS.usersId = USERS.usersId)
+        `, [id]); 
 
         //Objeto que handlebars renderizará
         const handlebarsObject = {
@@ -44,5 +49,30 @@ controller.specificPlan = async (req, res) => {
         res.send(`PLAN WITH ID ${id} DOESN´T EXIST`);
     }
 };
+
+controller.addComment = async (req, res) => {
+
+    //Se obtiene el id del plan desde el que se mandó la petición
+    const { id } = req.params; 
+    
+    //Obtiene los datos del formulario (incluídos los campos hidden)
+    const { commentsDescription, plansId, usersId } = req.body; 
+
+    //Se crea el nuevo objeto a insertar
+    const newComment = {
+        commentsDescription, 
+        plansId,
+        usersId
+    };
+
+    //Se inserta en la tabla
+    await pool.query('INSERT INTO COMMENTS SET ?', [newComment]); 
+ 
+    //Se envía el mensaje de añadido satisfactoriamente y se redirije de nuevo a la página
+    req.flash('success', 'New comment added successfully'); 
+    res.redirect(`/plans/${id}`); 
+    
+};
+
 
 module.exports = controller;

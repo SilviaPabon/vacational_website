@@ -1038,14 +1038,15 @@ ESTRUCTURA HTML
 }
 
 .plan__comments .planComment {
-  margin-top: 4px;
+  margin: 4px 0px 12px;
+  border-bottom: 1px solid #cccccc;
 }
 
 .plan__comments .planComment p {
   margin: 0 0 4px 0;
 }
 
-.plan__comments .planComment__date {
+.plan__comments .planComment__date, .plan__comments .planComment__name {
   color: #8D8D8D;
   font-size: 12px;
   text-transform: uppercase;

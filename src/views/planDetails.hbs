@@ -2,16 +2,16 @@
 
     <div class='plan-container grid-12'>
         {{#if planData}}
-            <div class="plan__image">
-                <img src="{{planData.plansImageUrl}}" alt="" srcset="">
+            <div class='plan__image'>
+                <img src='{{planData.plansImageUrl}}' alt='' srcset='' />
             </div>
             <div class='plan__main-info'>
                 <h1 class='title title--orange'>{{planData.plansName}}</h1>
                 <p class='plan__price'><span>From: </span>${{planData.plansPrice}} usd</p>
                 <p class='plan__description'><span>Description: </span>{{planData.plansDescription}}</p>
 
-                {{!--Tabla con la información de los planes --}}
-                <table class="plan__details">
+                {{!Tabla con la información de los planes }}
+                <table class='plan__details'>
                     <tbody>
                         <tr>
                             <td>Include Hotel:</td>
@@ -36,29 +36,39 @@
                     </tbody>
                 </table>
 
-
-                {{!-- Botón para reservar, de momento no hace nada --}}
+                {{! Botón para reservar, de momento no hace nada }}
                 <a href='#' class='btn btn__primary'>Reserve now</a>
             </div>
-            
-            <div class="plan__comments">
-                <h2 class="subtitle subtitle--orange">Comments</h2>
-                <form action="/comments/{{planData.plansId}}" method="post">
-                    <textarea name="commentsDescription" class="commentsDescription" placeholder="Write your own comment here"></textarea>
-                    <button type="submit" class="btn btn__primary">Send my comment</button>
-                </form>
+
+            <div class='plan__comments'>
+                <h2 class='subtitle subtitle--orange'>Comments</h2>
+                {{!--Si está logueado se le muestra la opción para comentar--}}
+                {{#if user}}
+                    <form action='/plans/comment/{{planData.plansId}}' method='post'>
+                        {{!Campos ocultos del formulario para saber al cuál plan pertenece y cuál es el usuario que quiere poner el comentario}}
+                        <input type='hidden' name='plansId' value='{{planData.plansId}}' />
+                        <input type='hidden' name='usersId' value='{{user.usersId}}' />
+                        <textarea
+                            name='commentsDescription'
+                            class='commentsDescription'
+                            placeholder='Write your own comment here'
+                        ></textarea>
+                        <button type='submit' class='btn btn__primary'>Send my comment</button>
+                    </form>
+                {{/if}}
 
                 {{#if planComments}}
-                    {{!--Si existen comentarios, los muestra--}}
+                    {{!Si existen comentarios, los muestra}}
                     {{#each planComments}}
-                        <div class="planComment">
-                            <p class="planComment__date">{{timeago commentsDate}}</p>
-                            <p class="planComment__content">{{commentsDescription}}</p>
+                        <div class='planComment'>
+                            <p class='planComment__date'>{{timeago commentsDate}}</p>
+                            <p class='planComment__name'>Comment by: {{usersFullname}}</p>
+                            <p class='planComment__content'>{{commentsDescription}}</p>
                         </div>
                     {{/each}}
                 {{else}}
-                    {{!--Si no hay comentarios--}}
-                    <p class="no-comments">No comments yet</p>
+                    {{!Si no hay comentarios}}
+                    <p class='no-comments'>No comments yet</p>
                 {{/if}}
             </div>
         {{/if}}
