@@ -12,4 +12,7 @@ router.get('/:id', controller.specificPlan);
 //Ruta para agregar un comentario a un plan
 router.post('/comment/:id', protectFunctions.isLoggedIn ,controller.addComment); 
 
+//Ruta para eliminar un comentario
+router.get('/comment/delete/:id', protectFunctions.ownComment, controller.removeComment); 
+
 module.exports = router; 

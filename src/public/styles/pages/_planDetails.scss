@@ -70,6 +70,7 @@
 
         margin: 4px 0px 12px;
         border-bottom: 1px solid rgb(204, 204, 204);
+        position: relative;
         
         & p{
             margin: 0 0 4px 0;
@@ -83,6 +84,13 @@
 
         &__content{
             font-weight: 300;
+        }
+
+        & i{
+            position: absolute;
+            top: 4;
+            right: 4;
+            color: $main_orange;
         }
 
     }

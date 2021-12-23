@@ -64,6 +64,7 @@
                             <p class='planComment__date'>{{timeago commentsDate}}</p>
                             <p class='planComment__name'>Comment by: {{usersFullname}}</p>
                             <p class='planComment__content'>{{commentsDescription}}</p>
+                            <a href="/plans/comment/delete/{{commentsId}}" id="deleteComment"><i class="fas fa-trash-alt"></i></a>
                         </div>
                     {{/each}}
                 {{else}}
@@ -75,3 +76,5 @@
     </div>
 
 </div>
+
+<script src="/scripts/plans_comment_confirm_delete.js"></script>
