@@ -457,10 +457,19 @@ template {
   color: #000000;
 }
 
+.subtitle--grey {
+  color: #8D8D8D;
+}
+
+.subtitle--red {
+  color: red;
+}
+
 .title {
   font-size: 20px;
   text-transform: uppercase;
   font-weight: bold;
+  margin: 24px 0;
 }
 
 .title--orange {
@@ -554,6 +563,16 @@ template {
 
 .form__message--act {
   display: block;
+}
+
+.input--auto-width {
+  width: auto;
+}
+
+/*Text areas*/
+.input-area {
+  resize: none;
+  height: 80px;
 }
 
 /*Contenedor y cards para los dashboards (reutilizables)*/
@@ -1075,6 +1094,94 @@ ESTRUCTURA HTML
   width: 80%;
 }
 
+.admin-plans-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 16px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.admin-plans-card {
+  width: 25%;
+  min-width: 240px;
+  padding: 16px 16px 24px;
+  background-color: white;
+  border: 1px solid #e9e9e9;
+}
+
+.admin-plans-card__image {
+  width: 100%;
+}
+
+.admin-plans-card h2 {
+  text-align: center;
+  font-weight: lighter;
+}
+
+.admins-plans-card__header {
+  border-bottom: 1px solid #ABABAB;
+}
+
+.plan-form {
+  width: 100%;
+}
+
+.plan-form-overview__inputs {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 5;
+  grid-column: 1/6;
+}
+
+.plan-form-overview__inputs .form-group {
+  margin: 8px 0;
+}
+
+.plan-form-overview__inputs label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.plan-form-overview__image {
+  grid-column: 6/-1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.plan-form-overview__image img {
+  width: 60%;
+}
+
+.plan-form-specific {
+  margin: 16px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 16px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.plan-form-specific label {
+  display: block;
+  margin-bottom: 8px;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   background: #FAFAFA;
@@ -1113,21 +1220,23 @@ body {
   .plan__comments {
     grid-column: 1/-1;
   }
+  .plan-form-overview__inputs {
+    grid-column: 1/-1;
+  }
+  .plan-form-overview__image {
+    grid-column: 1/-1;
+    -ms-grid-row: 1;
+    grid-row: 1;
+  }
+  .input {
+    width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
   .container--100vh {
     /*En celulares se debe restar más ya que el footer se re-acomoda*/
     min-height: calc(100vh - 260px);
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
   }
   .hero-content {
     width: 60%;
@@ -1150,9 +1259,6 @@ body {
     grid-column: 1/-1;
     -ms-grid-row: 1;
     grid-row: 1;
-  }
-  .input {
-    width: 100%;
   }
 }
 

@@ -95,12 +95,21 @@
     &--black {
         color : $dark;
     }
+
+    &--grey{
+        color: $soft_text; 
+    }
+
+    &--red{
+        color: red;
+    }
 }
 
 .title{
     font-size: $x_lg;
     text-transform: uppercase;
     font-weight: bold;
+    margin: 24px 0;
 
     &--orange{
         color: $main_orange; 
@@ -137,7 +146,21 @@
     background: $background_grey;
     font-size: $sm;
     padding: 8px;
+
+
+    &--auto-width{
+        width: auto;
+    }
+
+}
+
+/*Text areas*/
+.input-textarea{
+    resize: none;
+    height: 80px; 
+
 	transition: .3s ease all;
+
 }
 /* al seleccionar el form__input */
 .form__input:focus {
