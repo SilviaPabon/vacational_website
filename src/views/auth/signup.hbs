@@ -4,20 +4,37 @@
         <div class="form-container">
             <h2>SIGNUP</h2>
             <form action="/users/signup" method="post" id="form">
-                <div class="form-group">
+                <!-- fullname -->
+                <div class="form__group" id="group__fullname">
                     <label for="fullname" class="subtitle--orange">Fullname</label>
-                    <input type="text" name="usersFullname" id="fullname" placeholder="Your fullname here" class="input">
+                    <div class="form__group-input">
+                        <input type="text" name="usersFullname" id="fullname" placeholder="Your fullname here" class="form__input">
+                        <i class="form__icon-vstate fas fa-times-circle"></i>
+                    </div>
+    				<p class="form__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
                 </div>
-                <div class="form-group">
+                <!-- username -->
+                <div class="form__group" id="group__username">
                     <label for="username" class="subtitle--orange">Username</label>
-                    <input type="text" name="username" id="username" placeholder="Your username here" class="input">
+                    <div class="form__group-input">
+                        <input type="text" name="username" id="username" placeholder="Your username here" class="form__input">
+                        <i class="form__icon-vstate fas fa-times-circle"></i>
+                    </div>
+                    <p class="form__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
                 </div>
-                <div class="form-group">
+                <!-- password -->
+                <div class="form__group" id="group__password">
                     <label for="password" class="subtitle--orange">Password</label>
-                    <input type="password" name="password" id="password" placeholder="***********" class="input">
+                    <div class="form__group-input">
+                        <input type="password" name="password" id="password" placeholder="***********" class="form__input">
+                        <i class="form__icon-vstate fas fa-times-circle"></i>
+                    </div>
+                    <p class="form__input-error">El usuario tiene que ser de 4 a 16 dígitos y solo puede contener numeros, letras y guion bajo.</p>
                 </div>
-                <div class="form-group">
+                <!--  -->
+                <div class="form__group">
                     <p class="parr parr--black">Already has an account? <a href="/users/signin" class="parr--orange">Login</a></p>
+                    <p class="form__message" id="form__message">Error por favor rellena el formulario correctamente.</p>
                     <button class="btn btn__primary">
                         CREATE MY ACCOUNT
                     </button>

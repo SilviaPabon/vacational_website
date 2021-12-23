@@ -123,13 +123,74 @@
     }
 }
 /* cajas de input */
-.input {
+
+/* contiene input & icon */
+.form__group-input {
+    /* permite ubicación sencilla de ícono */
+    position: relative;
+}
+
+.form__input {
     width: 80%;
     border-radius: 12px;
-    border: 1px solid $input_placeholder;
+    border: 1px solid $dark_grey_1;
     background: $background_grey;
+    font-size: $sm;
     padding: 8px;
+	transition: .3s ease all;
 }
+/* al seleccionar el form__input */
+.form__input:focus {
+    border: 2px solid $main-orange;
+	outline: none;
+	box-shadow: 3px 0px 30px $dark_grey_1;
+}
+
+/* mensaje cuando hay error */
+.form__input-error {
+    font-size: $x_sm;
+	display: none;
+}
+
+.form__input-error-act {
+    display: block;
+}
+
+.form__icon-vstate {
+	position: absolute;
+	right: 84px;
+	bottom: 10px;
+	z-index: 100;
+	font-size: $sm;
+	opacity: 0;
+}
+/* formulario validación */
+.form__group--correct .form__icon-vstate{
+    color: $success;
+    opacity: 1;
+}
+
+.form__group--incorrect .form__icon-vstate{
+    color: $ward;
+    opacity: 1;
+}
+
+.form__group--incorrect .form__input{
+    border: 2px solid $ward;
+}
+/* error antes de hacer submit */
+.form__message {
+    font-size: $x_sm;
+    width: 77%;
+	background: $ward;
+	padding: 8px;
+	border-radius: 3px;
+	display: none;
+}
+
+.form__message--act {
+    display: block;
+} 
 
 /*Contenedor y cards para los dashboards (reutilizables)*/
 .dashboard__container{
