@@ -541,10 +541,7 @@ template {
 }
 
 .form__icon-vstate {
-  position: absolute;
-  right: 84px;
-  bottom: 10px;
-  z-index: 100;
+  z-index: 1;
   font-size: 14px;
   opacity: 0;
 }
