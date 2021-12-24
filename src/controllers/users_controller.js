@@ -10,7 +10,7 @@ controller.signup = (req, res) => {
 };
 
 controller.signupPost =  passport.authenticate('local.signup', {
-    successRedirect: '/user/dashboard',
+    successRedirect: '/users/signin',
     failureRedirect: '/users/signup',
     failureFlash: true
 });
@@ -21,7 +21,7 @@ controller.signin = (req, res) => {
 
 controller.signinPost = (req, res, next) => {
     passport.authenticate('local.signin', {
-        successRedirect: '/user/dashboard',
+        successRedirect: '/dashboard',
         failureRedirect: '/users/signin',
         failureFlash: true
     })(req, res, next);
