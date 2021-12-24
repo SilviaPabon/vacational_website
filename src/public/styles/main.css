@@ -1182,6 +1182,40 @@ ESTRUCTURA HTML
   margin-bottom: 8px;
 }
 
+.userplans-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 16px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.userplans-card {
+  width: 25%;
+  min-width: 240px;
+  padding: 16px 16px 24px;
+  background-color: white;
+  border: 1px solid #e9e9e9;
+}
+
+.userplans-card__image {
+  width: 100%;
+}
+
+.userplans-card h2 {
+  text-align: center;
+  font-weight: lighter;
+}
+
+.userplans-card__header {
+  border-bottom: 1px solid #ABABAB;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   background: #FAFAFA;
