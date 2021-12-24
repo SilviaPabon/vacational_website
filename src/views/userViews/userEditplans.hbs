@@ -1,0 +1,31 @@
+{{!-- para listar nuestras reservaciones --}}
+    <div class="container">
+    <div class="userplans-container">
+        {{!-- recorrer --}}
+        {{#each plans}}
+            <div class="col-md-3">
+                <div class="reasons-card">
+                    <div class="card-body">
+                        <a href="{{plansImageUrl}}" target='_blank'> {{!-- abrir en new win --}}
+                            <h3 class="card-title text-uppercase">
+                                {{plansCountry}}
+                            </h3>
+                        </a>
+                        <p class="m-2">{{plansName}}</p> <!--margen-->
+                        <p>{{timeago reservationsDate}}</p> <!--timeago, convertir stamps -->
+                        <a href="/links/delete/{{id}}" class="btn btn-danger">Delete Link</a>
+                        <a href="/links/edit/{{id}}" class="btn btn-secondary">Edit</a>
+                    </div>
+                </div>
+            </div>
+        {{else}}
+        <div class="container">
+            <article class="admin-plans-card">
+                <p class="parr">There are not plans/reservations yet</p>
+                <a  class="btn btn__primary" href="/plans/1">Add one!</a>
+            </article>
+        </div>
+        
+        {{/each}}
+    </div>
+</div>
