@@ -4,7 +4,6 @@ const controller = {};
 controller.index = async(req, res) => {
     const plans = await pool.query('SELECT plansId, plansImageUrl, plansName, plansCountry, plansPrice FROM PLANS');
     res.render('plansNormal', {plans});
-    console.log(plans);
 };
 
 controller.specificPlan = async (req, res) => {
