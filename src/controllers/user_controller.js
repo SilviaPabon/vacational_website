@@ -7,13 +7,13 @@ controller.dashboard = (req, res) => {
 };
 
 controller.watchuserplans = async(req, res) => {
-    const plans = await pool.query('SELECT * FROM RESERVATIONS WHERE usersId = ?', [req.user.usersId]);
+    const plans = await pool.query('SELECT plansName, plansCountry, plansImageUrl, reservationsDate FROM PLANS, RESERVATIONS WHERE PLANS.plansId = RESERVATIONS.plansId and RESERVATIONS.usersId = ?', [req.user.usersId]);
+    console.log(plans);
     res.render('userViews/userEditplans', {plans});
 };
 
 
 controller.addplans = async (req, res) => {
-    const {plansId, plansName, plansCountry, plansImageUrl} = req.body;
 
     const newReserv = {
         plansId,
