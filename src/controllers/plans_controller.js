@@ -1,8 +1,9 @@
 const pool = require('../database/database');
 const controller = {};
 
-controller.index = (req, res) => {
-    res.send('This is the plans route');
+controller.index = async(req, res) => {
+    const plans = await pool.query('SELECT plansId, plansImageUrl, plansName, plansCountry, plansPrice FROM PLANS');
+    res.render('plansNormal', {plans});
 };
 
 controller.specificPlan = async (req, res) => {

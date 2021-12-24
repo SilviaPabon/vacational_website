@@ -1,0 +1,41 @@
+.userplans-container {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    margin-top: 24px;
+}
+
+.userplans-card {
+    width: 25%;
+    min-width: 240px;
+    padding: 16px 16px 24px;
+    background-color: white;
+    border: 1px solid rgb(233, 233, 233);
+    text-align: left;
+
+    &__image {
+        width: 100%;
+    }
+    & h2{
+        text-align: left;
+        font-weight: lighter;
+    }
+}
+
+.userplans-card__header {
+    & h2{
+        text-align: left;
+        font-weight: lighter;
+    }
+}
+
+.userplans-card__body{
+    display: flex;
+    justify-content: space-between;
+
+    & p {
+        display: inline-block;
+    }
+}
