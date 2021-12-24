@@ -1,8 +1,9 @@
 const pool = require('../database/database');
 const controller = {};
 
-controller.index = (req, res) => {
-    res.send('This is the plans route');
+controller.index = async(req, res) => {
+    const plans = await pool.query('SELECT plansId, plansImageUrl, plansName, plansCountry, plansPrice FROM PLANS');
+    res.render('plansNormal', {plans});
 };
 
 controller.specificPlan = async (req, res) => {
@@ -29,7 +30,15 @@ controller.specificPlan = async (req, res) => {
 
     if (planData != null) {
         //Si existe el plan, busca también los comentarios y envía toda la información a Handlebars
-        const planComments = await pool.query('SELECT * FROM COMMENTS WHERE plansId = ?', [id]);
+        /* const planComments = await pool.query('SELECT * FROM COMMENTS WHERE plansId = ?', [id]); */
+
+        const planComments = await pool.query(
+            `SELECT COMMENTS.commentsId, COMMENTS.commentsDescription, COMMENTS.commentsDate, USERS.usersFullname
+        FROM COMMENTS, USERS
+        WHERE (COMMENTS.plansId = ? and COMMENTS.usersId = USERS.usersId)
+        `,
+            [id]
+        );
 
         //Objeto que handlebars renderizará
         const handlebarsObject = {
@@ -43,6 +52,42 @@ controller.specificPlan = async (req, res) => {
         //SI no existió el plan con el ID solicitado, envía el siguiente string
         res.send(`PLAN WITH ID ${id} DOESN´T EXIST`);
     }
+};
+
+controller.addComment = async (req, res) => {
+    //Se obtiene el id del plan desde el que se mandó la petición
+    const { id } = req.params;
+
+    //Obtiene los datos del formulario (incluídos los campos hidden)
+    const { commentsDescription, plansId, usersId } = req.body;
+
+    //Se crea el nuevo objeto a insertar
+    const newComment = {
+        commentsDescription,
+        plansId,
+        usersId,
+    };
+
+    //Se inserta en la tabla
+    await pool.query('INSERT INTO COMMENTS SET ?', [newComment]);
+
+    //Se envía el mensaje de añadido satisfactoriamente y se redirije de nuevo a la página
+    req.flash('success', 'New comment added successfully');
+    res.redirect(`/plans/${id}`);
+};
+
+controller.removeComment = async (req, res) => {
+    //Se obtiene el id del comentario a eliminar
+    const commentId = req.params.id;
+
+    //Se selecciona el id del plan que está observando (Para redirigir nuevamente a la vista)
+    const actualPlanRESULT = await pool.query('SELECT plansId FROM COMMENTS WHERE commentsId = ?', [commentId]);
+
+    //Se elimina el plan
+    await pool.query('DELETE FROM COMMENTS WHERE commentsId = ?', [commentId]);
+
+    req.flash('success', 'Comment was deleted successfully');
+    res.redirect(`/plans/${actualPlanRESULT[0]['plansId']}`);
 };
 
 module.exports = controller;
