@@ -76,8 +76,6 @@ passport.use('local.adminSignup', new LocalStrategy({
         usersFullname
     };
 
-    console.log(roleId); 
-
     newUser.usersPassword = await helpers.encryptPassword(usersPassword);
 
     /*Se inserta el usuario en la BD*/
