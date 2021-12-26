@@ -80,6 +80,7 @@ controller.addPlanPost = async (req, res) => {
     await pool.query('INSERT INTO PLANS SET ?', [newObject]);
 
     //Una vez inserta el dato, lo redirije a la vista de todos los planes
+    req.flash('success', 'SUCCESS: New plan was added successfully'); 
     res.redirect('/admin/plans');
 };
 
@@ -91,11 +92,11 @@ controller.removePlan = async (req, res) => {
     const result = await pool.query('DELETE FROM PLANS WHERE plansId = ?', [id]);
 
     if (result['affectedRows'] == 0) {
-        req.flash('message', `El plan con el id ${id} no existe`); 
+        req.flash('message', `ERROR: Plan with id: ${id} doesn´t exist`); 
         res.redirect('/admin/plans');
     } else {
         //SE manda el flash para indicar que se eliminó correctamente
-        req.flash('success', 'El plan se eliminó corectamente');
+        req.flash('success', 'SUCCESS: Plan was removed successfully');
         res.redirect('/admin/plans');
     }
 };
@@ -150,7 +151,7 @@ controller.updatePlan =  async (req, res) => {
     //Update it into DB
     await pool.query('UPDATE PLANS SET ? WHERE plansId = ?', [updatedPlan, id]); 
 
-    req.flash('success', 'El plan fue editado satisfactoriamente'); 
+    req.flash('success', 'SUCCESS: Plan was updated successfully'); 
     res.redirect('/admin/plans'); 
 };
 
