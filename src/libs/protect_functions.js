@@ -8,6 +8,8 @@ module.exports = {
             return next();
         }
 
+        //Si no está logueado se le envía un mensaje notificando
+        req.flash('message', 'Eror: You have to log in to access the requested action.'); 
         res.redirect('/users/signin');
     },
 
@@ -17,6 +19,8 @@ module.exports = {
             return next();
         }
 
+        //Si ya está logueado le notifica al usuario y lo redirige a su dashboard
+        req.flash('message', 'Eror: You have to log in to access the requested action.'); 
         res.redirect('/dashboard');
     },
 
@@ -33,6 +37,7 @@ module.exports = {
         }
 
         /*Si no es admin, lo regresa al dashboard de usuario*/ 
+        req.flash('message', '⚠️ WARD: You don´t have permissions to perform this action.'); 
         res.redirect('/user/dashboard');
 
     },

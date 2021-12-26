@@ -18,10 +18,10 @@ passport.use('local.signin', new LocalStrategy({
         if (validPassword){
             done(null, user);
         } else {
-            done(null, false, req.flash('message','Incorrect password')); //false xq no se puede mostrar
+            done(null, false, req.flash('message','ERROR: Incorrect password')); //false xq no se puede mostrar
         }
     } else {
-        return done(null, false, req.flash('message','User does not exists'));
+        return done(null, false, req.flash('message','ERROR: User does not exists'));
     }
 }));
 
@@ -93,6 +93,8 @@ passport.use('local.adminSignup', new LocalStrategy({
     await pool.query('INSERT INTO usersHasRoles SET ?', [userRole]); 
 
     /*El usuario sigue siendo el mismo de req.user*/
+
+    req.flash('success', 'SUCCESS: New user was created successfully'); 
     return done(null, req.user); 
 }));
 
