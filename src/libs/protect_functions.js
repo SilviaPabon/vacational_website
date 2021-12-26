@@ -9,7 +9,7 @@ module.exports = {
         }
 
         //Si no está logueado se le envía un mensaje notificando
-        req.flash('message', 'Eror: You have to log in to access the requested action.'); 
+        req.flash('message', 'Error: You have to log in to access the requested action.'); 
         res.redirect('/users/signin');
     },
 
@@ -20,7 +20,7 @@ module.exports = {
         }
 
         //Si ya está logueado le notifica al usuario y lo redirige a su dashboard
-        req.flash('message', 'Eror: You have to log in to access the requested action.'); 
+        req.flash('message', 'Error: You have to log in to access the requested action.'); 
         res.redirect('/dashboard');
     },
 
