@@ -32,6 +32,8 @@ passport.use('local.signup', new LocalStrategy({
     passReqToCallback: true
 
 }, async (req, usersUsername, usersPassword, done) => {
+    
+    //Se crea el nuevo usuario a insertar en la BD
     const {usersFullname} = req.body;
     const newUser = {
         usersUsername,
@@ -41,20 +43,33 @@ passport.use('local.signup', new LocalStrategy({
 
     newUser.usersPassword = await helpers.encryptPassword(usersPassword);
 
-    /*Se inserta el usuario en la BD*/
-    const result = await pool.query('INSERT INTO USERS SET ?', [newUser]);
-    newUser.usersId = result.insertId; 
+    //Se valida que no exista el username
+    const queryUsername = await pool.query('SELECT * FROM USERS WHERE usersUsername = ?', [newUser.usersUsername]); 
 
-    /*Se inserta el rol, siempre será user si se crea desde esta vista*/
-    const userRole = {
-        userId: result.insertId,
-        roleId: 2,
-    }; 
+    //Si está disponible, continúa
+    if(queryUsername.length == 0){
+        console.log('AVALIABLE'); 
 
-    /*Se inserta el rol del usuario en la BD*/
-    await pool.query('INSERT INTO usersHasRoles SET ?', [userRole]); 
+        /*Se inserta el usuario en la BD*/
+        const result = await pool.query('INSERT INTO USERS SET ?', [newUser]);
+        newUser.usersId = result.insertId; 
 
-    return done(null, newUser); 
+        /*Se inserta el rol, siempre será user si se crea desde esta vista*/
+        const userRole = {
+            userId: result.insertId,
+            roleId: 2,
+        }; 
+
+        /*Se inserta el rol del usuario en la BD*/
+        await pool.query('INSERT INTO usersHasRoles SET ?', [userRole]); 
+
+        return done(null, newUser); 
+    }else{
+
+        //Si el nombre escogido no está disponible, manda un req.flash
+        return done(null, false, req.flash('message', `ERROR: Username ${newUser.usersUsername} is already taken`));
+
+    }
 }));
 
 // ######################
