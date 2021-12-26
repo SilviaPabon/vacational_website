@@ -48,8 +48,7 @@ passport.use('local.signup', new LocalStrategy({
 
     //Si está disponible, continúa
     if(queryUsername.length == 0){
-        console.log('AVALIABLE'); 
-
+        
         /*Se inserta el usuario en la BD*/
         const result = await pool.query('INSERT INTO USERS SET ?', [newUser]);
         newUser.usersId = result.insertId; 
