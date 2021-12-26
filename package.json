@@ -7,7 +7,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "dev": "nodemon run src/index.js"
+    "dev": "nodemon run src/index.js",
+    "start":"node src"
   },
   "keywords": [],
   "author": "",
