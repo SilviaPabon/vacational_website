@@ -1,20 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/users_controller.js');
+const protectFunctions = require('../libs/protect_functions'); 
 
-router.get('/', controller.index);
+router.get('/signup', protectFunctions.isNotLoggedId,  controller.signup);
 
-router.get('/signup', controller.signup);
+router.post('/signup', protectFunctions.isNotLoggedId, controller.signupPost);
 
-router.post('/signup', controller.signupPost);
+router.get('/signin', protectFunctions.isNotLoggedId, controller.signin);
 
-router.get('/signin', controller.signin);
+router.post('/signin', protectFunctions.isNotLoggedId, controller.signinPost);
 
-router.post('/signin', controller.signinPost);
-
-router.get('/logout', (req, res) => {
-    req.logOut(); //Cierra la sesión
-    res.redirect('/users/signin'); //Lo redirecciona a iniciar sesión
-});
+router.get('/logout', protectFunctions.isLoggedIn, controller.logout);
 
 module.exports = router;

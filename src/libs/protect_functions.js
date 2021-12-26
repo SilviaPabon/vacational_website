@@ -17,7 +17,7 @@ module.exports = {
             return next();
         }
 
-        res.redirect('/profile');
+        res.redirect('/dashboard');
     },
 
     /*Función para saber si el usuario es administrador*/

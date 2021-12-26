@@ -35,9 +35,11 @@
                         </tr>
                     </tbody>
                 </table>
-
-                {{! Botón para reservar, de momento no hace nada }}
-                <a href='#' class='btn btn__primary'>Reserve now</a>
+                <form action='/user/plans/add' method='post'>
+                        {{!Campos ocultos del formulario para saber al cuál plan pertenece y cuál es el usuario que quiere poner el comentario}}
+                        <input type='hidden' name='plansId' value='{{planData.plansId}}' />
+                        <button type="submit" class="btn btn__primary" name="reserveNow">Reserve now</button>
+                </form>
             </div>
 
             <div class='plan__comments'>

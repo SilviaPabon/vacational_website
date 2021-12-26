@@ -1,0 +1,30 @@
+{{!-- para listar nuestras reservaciones --}}
+<div class="container container--100vh">
+    <h1 class="title">My plans</h1>
+    {{#if plans}}
+    <a href="/plans/" class="btn btn__primary">Add a new plan</a>
+    {{/if}}
+    <div class="userplans-container">
+        {{!-- recorrer --}}
+        {{#each plans}}
+            <article class="userplans-card">
+                <div class="userplans-card__header">
+                    <img src="{{plansImageUrl}}" alt="" class="userplans-card__image">
+                    <h2 class="subtitle subtitle--grey">{{plansName}}</h2>
+                    <p>{{plansCountry}}</p>
+                    <p>{{timeago reservationsDate}}</p>
+                </div>
+                <div class="userplans-card__body">
+                    <a href="/user/plans/delete/{{plansId}}" class="btn btn__danger" id="deletePlan">Remove</a>
+                </div>
+            </article>
+        {{else}}
+        <div class="container">
+            <article class="admin-plans-card">
+                <p class="parr">There are not plans/reservations yet</p>
+                <a  class="btn btn__primary" href="/plans/">Add one!</a>
+            </article>
+        </div>
+        {{/each}}
+    </div>
+</div>

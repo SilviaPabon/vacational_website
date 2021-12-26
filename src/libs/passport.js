@@ -16,7 +16,7 @@ passport.use('local.signin', new LocalStrategy({
         const user = rows[0];
         const validPassword = await helpers.matchPassword(password, user.usersPassword);
         if (validPassword){
-            done(null, user, req.flash('success', 'Welcome ' + user.usersUsername));
+            done(null, user);
         } else {
             done(null, false, req.flash('message','Incorrect password')); //false xq no se puede mostrar
         }
@@ -75,8 +75,6 @@ passport.use('local.adminSignup', new LocalStrategy({
         usersPassword,
         usersFullname
     };
-
-    console.log(roleId); 
 
     newUser.usersPassword = await helpers.encryptPassword(usersPassword);
 
