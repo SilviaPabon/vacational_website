@@ -6,10 +6,10 @@ const {isLoggedIn} = require('../libs/protect_functions.js');
 
 router.get('/dashboard', controller.dashboard);
 
-router.get('/plans', isLoggedIn, controller.watchuserplans);
+router.get('/plans', isLoggedIn, controller.watchUserPlans);
 
-router.post('/plans', isLoggedIn, controller.addplans);
+router.post('/plans/add', isLoggedIn, controller.userAddPlans);
 
-
+router.get('/plans/delete/:id', isLoggedIn, controller.userDeletePlans);
 
 module.exports = router; 

@@ -1,7 +1,9 @@
 {{!-- para listar nuestras reservaciones --}}
 <div class="container container--100vh">
     <h1 class="title">My plans</h1>
+    {{#if plans}}
     <a href="/plans/" class="btn btn__primary">Add a new plan</a>
+    {{/if}}
     <div class="userplans-container">
         {{!-- recorrer --}}
         {{#each plans}}
@@ -13,14 +15,14 @@
                     <p>{{timeago reservationsDate}}</p>
                 </div>
                 <div class="userplans-card__body">
-                    <a href="/admin/plans/delete/{{plansId}}" class="btn btn__danger" id="deletePlan">Remove</a>
+                    <a href="/user/plans/delete/{{plansId}}" class="btn btn__danger" id="deletePlan">Remove</a>
                 </div>
             </article>
         {{else}}
         <div class="container">
             <article class="admin-plans-card">
                 <p class="parr">There are not plans/reservations yet</p>
-                <a  class="btn btn__primary" href="/plans/1">Add one!</a>
+                <a  class="btn btn__primary" href="/plans/">Add one!</a>
             </article>
         </div>
         {{/each}}
