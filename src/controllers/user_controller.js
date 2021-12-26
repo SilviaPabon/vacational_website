@@ -41,7 +41,8 @@ controller.userDeletePlans = async(req, res) => {
     const { id } = req.params;
 
     //Intenta eliminar el id dado
-    const result = await pool.query('DELETE FROM RESERVATIONS WHERE plansId = ?', [id]);
+    const result = await pool.query('DELETE FROM RESERVATIONS WHERE plansId = ? and usersId = ?', [id, req.user.usersId]);
+
     if (result['affectedRows'] == 0) {
         req.flash('message', `You don't have any reservation with ${id} id`); 
         res.redirect('/user/plans');
