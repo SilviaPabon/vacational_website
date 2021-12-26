@@ -23,4 +23,9 @@ controller.signinPost = (req, res, next) => {
     })(req, res, next);
 };
 
+controller.logout = (req, res) => {
+    req.logOut(); //Cierra la sesión
+    res.redirect('/users/signin'); //Lo redirecciona a iniciar sesión
+};
+
 module.exports = controller; 
