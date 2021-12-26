@@ -3,7 +3,12 @@ const controller = {};
 
 controller.index = async(req, res) => {
     const plans = await pool.query('SELECT plansId, plansImageUrl, plansName, plansCountry, plansPrice FROM PLANS');
-    res.render('plansNormal', {plans});
+    
+    const handlebarsObject = {
+        title: 'Plan Options', //Título de la página
+        plans: plans, //Objeto que contiene la información del plan
+    };
+    res.render('plansNormal', handlebarsObject);
 };
 
 controller.specificPlan = async (req, res) => {

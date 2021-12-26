@@ -3,12 +3,19 @@ const controller = {};
 const pool = require('../database/database');
 
 controller.dashboard = (req, res) => {
-    res.render('userViews/dashboard');
+    const handlebarsObject = {
+        title: 'User :: Dashboard', //Título de la página
+    };
+    res.render('userViews/dashboard', handlebarsObject);
 };
 //despliegue de planes del usuario
 controller.watchUserPlans = async(req, res) => {
     const plans = await pool.query('SELECT PLANS.plansId, plansName, plansCountry, plansImageUrl, reservationsDate FROM PLANS, RESERVATIONS WHERE PLANS.plansId = RESERVATIONS.plansId and RESERVATIONS.usersId = ?', [req.user.usersId]);
-    res.render('userViews/userEditplans', {plans});
+    const handlebarsObject = {
+        title: 'User :: My Plans',
+        plans: plans //Título de la página
+    };
+    res.render('userViews/userEditplans', handlebarsObject);
 };
 
 //para que el usuario agrege los planes
