@@ -20,7 +20,7 @@ controller.userAddPlans = async (req, res) => {
         usersId: req.user.usersId
     }; 
 
-    const rows = await pool.query('SELECT * FROM RESERVATIONS WHERE plansId = ?', [plansId]);
+    const rows = await pool.query('SELECT * FROM RESERVATIONS WHERE plansId = ? and usersId = ?', [plansId, req.user.usersId]);
 
     console.log(plansId);
     if(rows.length > 0) {
