@@ -18,22 +18,25 @@
     &__image {
         width: 100%;
     }
-    & h2{
-        text-align: left;
-        font-weight: lighter;
+
+    & #timeago {
+        text-align: right;
+        margin-bottom: 0;
     }
 }
 
 .userplans-card__header {
     & h2{
-        text-align: left;
+        text-align: center;
         font-weight: lighter;
+        text-transform: none;
     }
 }
 
 .userplans-card__body{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     & p {
         display: inline-block;

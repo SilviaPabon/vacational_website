@@ -130,6 +130,12 @@
     &--orange {
         color: $main-orange;
     }
+
+    &--sm {
+        font-size: $md;
+        font-weight: lighter;
+        color: $input_placeholder;
+    }
 }
 /* cajas de input */
 
