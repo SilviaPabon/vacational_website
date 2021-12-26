@@ -2,7 +2,10 @@ const controller = {};
 const passport = require('passport');
 
 controller.signup = (req, res) => {
-    res.render('auth/signup');
+    const handlebarsObject = {
+        title: 'Users :: Sign Up', //Título de la página
+    };
+    res.render('auth/signup', handlebarsObject);
 };
 
 controller.signupPost =  passport.authenticate('local.signup', {
@@ -12,7 +15,10 @@ controller.signupPost =  passport.authenticate('local.signup', {
 });
 
 controller.signin = (req, res) => {
-    res.render('auth/signin');
+    const handlebarsObject = {
+        title: 'Users :: Sign In', //Título de la página
+    };
+    res.render('auth/signin', handlebarsObject);
 };
 
 controller.signinPost = (req, res, next) => {
