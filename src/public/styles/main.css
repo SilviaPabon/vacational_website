@@ -491,6 +491,12 @@ template {
   color: #FF8800;
 }
 
+.parr--sm {
+  font-size: 16px;
+  font-weight: lighter;
+  color: #ABABAB;
+}
+
 /* cajas de input */
 /* contiene input & icon */
 .form__group-input {
@@ -1217,14 +1223,15 @@ ESTRUCTURA HTML
   width: 100%;
 }
 
-.userplans-card h2 {
-  text-align: left;
-  font-weight: lighter;
+.userplans-card #timeago {
+  text-align: right;
+  margin-bottom: 0;
 }
 
 .userplans-card__header h2 {
-  text-align: left;
+  text-align: center;
   font-weight: lighter;
+  text-transform: none;
 }
 
 .userplans-card__body {
@@ -1234,6 +1241,9 @@ ESTRUCTURA HTML
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .userplans-card__body p {
