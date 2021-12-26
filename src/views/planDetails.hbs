@@ -35,13 +35,9 @@
                         </tr>
                     </tbody>
                 </table>
-                <form action='/user/plans' method='post'>
+                <form action='/user/plans/add' method='post'>
                         {{!Campos ocultos del formulario para saber al cuál plan pertenece y cuál es el usuario que quiere poner el comentario}}
                         <input type='hidden' name='plansId' value='{{planData.plansId}}' />
-                        <input type='hidden' name='plansName' value='{{planData.plansName}}'/>
-                        <input type='hidden' name='plansCountry' value='{{planData.plansCountry}}'/>
-                        <input type='hidden' name='plansImageUrl' value='{{planData.plansImageUrl}}'/>
-                        <input type='hidden' name='reservationsDate' value='{{timeago reservationsDate}}'/>
                         <button type="submit" class="btn btn__primary" name="reserveNow">Reserve now</button>
                 </form>
             </div>
