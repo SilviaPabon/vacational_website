@@ -28,20 +28,13 @@ controller.userAddPlans = async (req, res) => {
     }; 
 
     const rows = await pool.query('SELECT * FROM RESERVATIONS WHERE plansId = ? and usersId = ?', [plansId, req.user.usersId]);
-
-    console.log(plansId);
     if(rows.length > 0) {
-        const user = rows[0];
-        console.log(user);
         req.flash('message','You already have this reservation');
         res.redirect('/user/plans');
     } else {
         await pool.query('INSERT INTO RESERVATIONS set ?', [newReserv]);
         res.redirect('/user/plans');
     }
-    //await pool.query('INSERT INTO RESERVATIONS set ?', [newReserv]);
-    //req.flash('success', 'Your reservation has been made successfully'); 
-    
 };
 
 controller.userDeletePlans = async(req, res) => {
