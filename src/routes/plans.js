@@ -13,6 +13,6 @@ router.get('/:id', controller.specificPlan);
 router.post('/comment/:id', protectFunctions.isLoggedIn ,controller.addComment); 
 
 //Ruta para eliminar un comentario
-router.get('/comment/delete/:id', protectFunctions.ownComment, controller.removeComment); 
+router.get('/comment/delete/:id', protectFunctions.isLoggedIn, protectFunctions.ownComment, controller.removeComment); 
 
 module.exports = router; 
