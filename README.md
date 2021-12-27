@@ -24,7 +24,11 @@ git clone https://github.com/SilviaPabon/vacational_website
 cd .\vacational_website\
 ```
 
-3. Change to **dev (recommended)** or deployment branch. Those are the most up-to-date branches.  
+3. Change to **dev (recommended)** or deployment branch. Those are commonly the most up-to-date branches.
+
+```shell script
+git checkout dev
+```
 
 4. Install node dependencies: 
 
