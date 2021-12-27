@@ -4,6 +4,15 @@
     {{#if plans}}
     <a href="/plans/" class="btn btn__primary">Add a new plan</a>
     {{/if}}
+
+    {{!-- Alerta de que los planes ofertados son falsos --}}
+    <div class="alert alert--ward">
+        <button class="alert__close">
+            <i class="fas fa-times"></i>
+        </button>
+        <p class="alert__message"><strong>This web page has been produced just for academic purposes:</strong> All reservations that may be shown below are completely fictitious.</p>
+    </div>
+    
     <div class="userplans-container">
         {{!-- recorrer --}}
         {{#each plans}}

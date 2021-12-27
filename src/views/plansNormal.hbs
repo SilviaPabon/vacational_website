@@ -1,5 +1,14 @@
 <div class="container container--100vh">
     <h1 class="title">OFFERED PLANS LIST: </h1>
+
+    {{!-- Alerta de que los planes ofertados son falsos --}}
+    <div class="alert alert--ward">
+        <button class="alert__close">
+            <i class="fas fa-times"></i>
+        </button>
+        <p class="alert__message"><strong>This web page has been produced just for academic purposes:</strong> All plans shown below, along with their prices, are fictitious.</p>
+    </div>
+
     <div class="userplans-container">
         {{!-- recorrer --}}
         {{#each plans}}

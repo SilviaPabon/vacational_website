@@ -1,5 +1,13 @@
 <div class='container'>
 
+    {{!-- Alerta de que los planes ofertados son falsos --}}
+    <div class="alert alert--ward">
+        <button class="alert__close">
+            <i class="fas fa-times"></i>
+        </button>
+        <p class="alert__message"><strong>This web page has been produced just for academic purposes:</strong> All details shown below are fictitious. If you click on "reserve now", the reservation will be completely fictitious.</p>
+    </div>
+
     <div class='plan-container grid-12'>
         {{#if planData}}
             <div class='plan__image'>
