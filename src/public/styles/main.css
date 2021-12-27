@@ -767,8 +767,8 @@ ESTRUCTURA HTML
 .alert__close {
   border: transparent;
   position: absolute;
-  top: 4;
-  right: 4;
+  top: 4px;
+  right: 4px;
   padding: 6px;
   background-color: #e0e0e0;
   border: 1px solid #bbbbbb;
@@ -1065,8 +1065,8 @@ ESTRUCTURA HTML
 
 .plan__comments .planComment i {
   position: absolute;
-  top: 4;
-  right: 4;
+  top: 4px;
+  right: 4px;
   color: #FF8800;
 }
 
@@ -1253,6 +1253,14 @@ ESTRUCTURA HTML
 body {
   font-family: "Roboto", sans-serif;
   background: #FAFAFA;
+}
+
+/*Clase que se le agrega al body cuando se abre el nav (en celulares)*/
+.body--fixed {
+  /*Cuando se abre el nav en celulares, la posición del body se queda fija*/
+  position: fixed;
+  /*Su ancho sigue siendo el 100% de la página (Si no se ponía más ancho)*/
+  width: 100%;
 }
 
 @media (max-width: 1400px) {

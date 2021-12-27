@@ -9,7 +9,7 @@
         {{#each plans}}
             <article class="userplans-card">
                 <div class="userplans-card__header">
-                    <img src="{{plansImageUrl}}" alt="" class="userplans-card__image">
+                    <img loading="lazy" src="{{plansImageUrl}}" alt="{{plansName}} plan image" class="userplans-card__image">
                     <h2 class="subtitle subtitle--orange">{{plansName}}</h2>
                     <p><span class="parr--orange"> <i class="fas fa-map-marker-alt"></i></span>  Country: <span></span><span class="parr parr--black">{{plansCountry}}</span></p>
                 </div>
