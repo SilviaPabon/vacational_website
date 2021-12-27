@@ -11,6 +11,10 @@ router.get('/signin', protectFunctions.isNotLoggedId, controller.signin);
 
 router.post('/signin', protectFunctions.isNotLoggedId, controller.signinPost);
 
+router.get('/edit', protectFunctions.isLoggedIn, controller.editAccount);
+
+router.post('/update', protectFunctions.isLoggedIn, controller.updateAccount); 
+
 router.get('/logout', protectFunctions.isLoggedIn, controller.logout);
 
 module.exports = router;
