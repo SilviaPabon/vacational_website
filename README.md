@@ -1,6 +1,10 @@
 # vacational_website
  Website about vacational plans, made for learning purposes
  
+## DEPLOYMENT:
+
+Web site is hosted on [HEROKU](https://vacational-website.herokuapp.com/)
+ 
 ## AUTHORS: 
 
 - 👩 Silvia Pabón: https://github.com/SilviaPabon
@@ -20,15 +24,17 @@ git clone https://github.com/SilviaPabon/vacational_website
 cd .\vacational_website\
 ```
 
-3. Install node dependencies: 
+3. Change to **dev (recommended)** or deployment branch. Those are the most up-to-date branches.  
+
+4. Install node dependencies: 
 
 ```shell script
 npm i
 ```
 
-4. Create your own MySQL database running ```./src/database/DB.sql``` script. **The script creates the base tables and insert some data**. 
+5. Create your own MySQL database running ```./src/database/DB.sql``` script. **The script creates the base tables and insert some data**. 
 
-5. Create your own .env file with the following fields:
+6. Create your own .env file with the following fields:
 
 | FIELD | DESCRIPTION |
 | ------------- | ------------- |
@@ -39,13 +45,13 @@ npm i
 | DB_PASSWORD  | MySQL user password  |
 | SE_SECRET  | Node session secret.  |
 
-6. Run dev script: 
+7. Run dev script: 
 
 ```shell script
 npm run dev
 ```
 
-7. Open localhost:3000 on your browser.
+8. Open localhost:3000 on your browser.
 
 ## SOME VIEWS: 
 
