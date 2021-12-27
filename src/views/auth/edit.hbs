@@ -1,0 +1,51 @@
+<div class="container container--100vh container--contentCenter">
+
+    <div class="grid-12 container--rounded">
+        <div class="form-container">
+            <h2>EDIT YOUR ACCOUNT</h2>
+            <form action="/users/update" method="post" id="form">
+                <!-- fullname -->
+                <div class="form__group" id="group__fullname">
+                    <label for="fullname" class="subtitle--orange">Fullname</label>
+                    <div class="form__group-input">
+                        <input type="text" name="usersFullname" id="fullname" value="{{actualUser.usersFullname}}" class="form__input">
+                        <i class="form__icon-vstate fas fa-times-circle"></i>
+                    </div>
+    				<p class="form__input-error">El nombre debe tener de 4 a 64 caracteres y solo puede contener letras, espacios y acentos.</p>
+                </div>
+                <!-- username -->
+                <div class="form__group" id="group__username">
+                    <label for="username" class="subtitle--orange">Username</label>
+                    <div class="form__group-input">
+                        <input type="text" name="username" id="username" value="{{actualUser.usersUsername}}" class="form__input">
+                        <i class="form__icon-vstate fas fa-times-circle"></i>
+                    </div>
+                    <p class="form__input-error">El usuario tiene que ser de 4 a 32 dígitos y solo puede contener numeros, letras y guion bajo.</p>
+                </div>
+                <!-- password -->
+                <div class="form__group" id="group__password">
+                    <label for="password" class="subtitle--orange">New Password</label>
+                    <div class="form__group-input">
+                        <input type="password" name="password" id="password" placeholder="Type your new password" class="form__input">
+                        <i class="form__icon-vstate fas fa-times-circle"></i>
+                    </div>
+                    <p class="form__input-error">La contraseña debe tener de 4 a 24 caracteres</p>
+                </div>
+                <!--  -->
+                <div class="form__group">
+                    <p class="parr parr--black">Already has an account? <a href="/users/signin" class="parr--orange">Login</a></p>
+                    <p class="form__message" id="form__message">Error por favor rellena el formulario correctamente.</p>
+                    <button class="btn btn__primary">
+                        UPDATE ACCOUNT
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="auth-img">
+            <img src="/images/vectors/login_vector.svg" alt="image of signup">
+        </div>
+    </div>
+
+</div>
+
+<script src="/scripts/auth/signup.js"></script>

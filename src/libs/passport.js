@@ -71,6 +71,31 @@ passport.use('local.signup', new LocalStrategy({
     }
 }));
 
+passport.use('local.updateAccount', new LocalStrategy({
+    usernameField: 'username',
+    passwordField: 'password',
+    passReqToCallback: true
+}, async (req, usersUsername, usersPassword, done) => {
+
+    //Desde el req.body se recibe el fullname
+    const { usersFullname } = req.body; 
+
+    //Objeto de los nuevos datos
+    const newUser = {
+        usersUsername,
+        usersPassword,
+        usersFullname
+    };
+    
+    newUser.usersPassword = await helpers.encryptPassword(usersPassword); 
+
+    await pool.query('UPDATE USERS SET usersFullname = ?, usersUsername = ?, usersPassword = ? WHERE usersId = ?', [newUser.usersFullname, newUser.usersUsername, newUser.usersPassword, req.user.usersId]);
+
+    req.flash('success', 'SUCCESS: New user was created successfully'); 
+    return done(null, req.user);
+
+})); 
+
 // ######################
 //Signup ADMIN
 // ######################
