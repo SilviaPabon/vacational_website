@@ -786,7 +786,7 @@ ESTRUCTURA HTML
 .hero-section {
   color: white;
   width: 100%;
-  height: calc(100vh - 60px);
+  min-height: calc(100vh - 60px);
   background: url("/images/hero_bg.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -808,6 +808,9 @@ ESTRUCTURA HTML
       -ms-flex-align: center;
           align-items: center;
   text-align: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 32px 0;
 }
 
 .hero-content {
@@ -1408,6 +1411,9 @@ body {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+  }
+  .reasons-card {
+    width: 80%;
   }
 }
 /*# sourceMappingURL=main.css.map */
