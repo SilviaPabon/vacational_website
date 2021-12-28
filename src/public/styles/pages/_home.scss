@@ -1,5 +1,156 @@
 /*Hero container*/
+.hero-section {
+    color: white;
+    width: 100%;
+    min-height: calc(100vh - 60px);
+    background: url('/images/hero_bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* para generar el centramiento de los textos */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
-/* Why section*/
+    box-sizing: border-box;
+    padding: 32px 0;
+}
+
+.hero-content {
+
+    width: 50%;
+
+    & h1{
+        /*Se quita el margin por defecto del título*/
+        margin: 0;
+        font-size: 2vw;
+    }
+    /* para mantener constantes los tamaños de los textos y btn */
+    & p {
+        font-size: 1.2vw;
+    }
+
+    & .hero-let-unique {
+        color: $main_orange;
+    }
+
+    & .btn--hero {
+        font-size: 1.2vw;
+        
+    }
+}
+
+/* Why section */
+
+.why-section {
+    color: white;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.reasons__container {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.reasons__header {
+    text-align: center;
+}
+
+.reasons-card {
+    width: 90%;
+    max-width: 372px;
+    box-sizing: border-box;
+    background: $light;
+    border: 1px solid $soft_text;
+    border-radius: 16px;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
+
+    /* animación */
+    cursor: default;
+    transition: all 400ms ease;
+
+    padding: 32px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    font-size: $lg;
+}
+/* efecto para las tarjetas con el cursor */
+.reasons-card:hover {
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.4);
+    transform: translateY(-3%);
+}
+
+.reasons-card img {
+    width: 234px;
+    height: 189px;
+    align-items: center;
+}
 
 /*Plans carrousel*/
+.carrousel-section{
+    background-color: $main_orange;
+    border-radius: 16px;
+    
+    /*Para centrar el contenido en la sección*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 36px;
+
+    /*La sección ocupa el 80% del alto disponible*/
+    min-height: 80vh;
+    padding: 16px 0;
+    margin: 16px 0;
+
+    & h2{
+        /*Se quita el margin por defecto del título y ocupa el 90% del ancho disponible*/
+        margin: 0;
+        width: 90%;
+    }
+}
+
+.carrousel-card{
+    /*Tarjetas contenedoras de los diferentes planes*/
+    width: 240px; /*Cada card tiene un ancho de 240px*/
+    text-align: center;
+    background-color: $light;
+    border-radius: 16px;
+    overflow: hidden; 
+
+    &__image{
+        /*La imágen ocupa todo el ancho del contenedor*/
+        width: 100%;
+    }
+
+    &__texts{
+        padding: 16px 0;
+    }
+
+    &__title, &__country{
+        margin: 0;
+        padding: 0;
+    }
+
+    &__title{
+        text-transform: uppercase;
+    }
+
+    &__country{
+        color: $soft_text;
+        font-weight: lighter;
+    }
+}

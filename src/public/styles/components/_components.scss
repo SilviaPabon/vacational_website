@@ -1,39 +1,75 @@
 /*Global components (USING BEM METODOLOGY)*/
 
-.container{
+.container {
     /*Contenedor que ocupa el 80% del ancho disponible (Para agregar márgenes laterales)*/
     width: 80%;
     max-width: 1200px;
-    margin: 0px auto;
+    margin: 16px auto;
+
+    &--100vh {
+        /* se restan 208px por el footer y la nav */
+        min-height: calc(100vh - 208px);
+    }
+
+    &--rounded {
+        background: $light;
+        border-radius: 24px;
+        border: 1px solid $input_placeholder;
+        padding: 20px;
+        box-shadow: 4px 4px 12px $input_placeholder;
+    }
+
+    &--contentCenter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
-.btn{
+.grid-12 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+.btn {
     /*Block*/
-    border: 1px transparent; 
-    padding: 0.4em 0.6em; 
+    border: 1px solid transparent;
+    padding: 0.4em 0.6em;
     cursor: pointer;
     background-color: white; /*Color base del fondo*/
     text-transform: uppercase;
     border-radius: 16px;
     color: white; /*Color base de las letras*/
     width: max-content; /*Nunca permite que se "partan las palabras"*/
+    transition: all 0.3s ease;
+    text-decoration: none;
+    margin: 8px 0;
 
     /*Elements*/
-    &__primary{
+    &__primary {
         background-color: $main_orange;
     }
 
-    &__danger{
+    &__danger {
         background-color: $danger_red;
     }
 
-    &__primary_transparent{
-        background-color: white;
-        border: 1px solid $main_orange;
-        color: $main_orange; 
+    &__nav {
+        background-color: transparent;
+        color: white;
     }
 
-    &__danger_transparent{
+    &__nav:hover {
+        border: 1px solid white;
+    }
+
+    &__primary_transparent {
+        background-color: white;
+        border: 1px solid $main_orange;
+        color: $main_orange;
+    }
+
+    &__danger_transparent {
         background-color: white;
         border: 1px solid $danger_red;
         color: $danger_red;
@@ -42,13 +78,181 @@
     /*Modifiers*/
 }
 
-.subtitle{
+.subtitle {
     font-size: $lg;
     text-transform: uppercase;
     font-weight: bold;
 
     /*Modificadores de la clase*/
-    &--white{
-        color: white; 
+    &--white {
+        color: white;
     }
+
+    &--orange {
+        color: $main_orange;
+    }
+
+    &--black {
+        color: $dark;
+    }
+
+    &--grey {
+        color: $soft_text;
+    }
+
+    &--red {
+        color: red;
+    }
+}
+
+.title {
+    font-size: $x_lg;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 24px 0;
+
+    &--orange {
+        color: $main_orange;
+    }
+}
+
+/* para textos normales */
+.parr {
+    font-size: $lg;
+    font-weight: lighter;
+
+    /* modificadores */
+
+    &--black {
+        color: $dark;
+    }
+
+    &--orange {
+        color: $main-orange;
+    }
+
+    &--sm {
+        font-size: $md;
+        font-weight: lighter;
+        color: $input_placeholder;
+    }
+}
+/* cajas de input */
+
+/* contiene input & icon */
+.form__group-input {
+    /* permite ubicación sencilla de ícono */
+    position: relative;
+}
+
+.form__input {
+    width: 80%;
+    border-radius: 12px;
+    border: 1px solid $dark_grey_1;
+    background: $background_grey;
+    font-size: $sm;
+    padding: 8px;
+
+    &--auto-width {
+        width: auto;
+    }
+
+    &--textarea {
+        resize: none;
+        min-height: 100px;
+    }
+}
+
+/*Text areas*/
+.input-textarea {
+    transition: 0.3s ease all;
+}
+/* al seleccionar el form__input */
+.form__input:focus {
+    border: 2px solid $main-orange;
+    outline: none;
+    box-shadow: 3px 0px 30px $dark_grey_1;
+}
+
+/* mensaje cuando hay error */
+.form__input-error {
+    font-size: $x_sm;
+    display: none;
+}
+
+.form__input-error-act {
+    display: block;
+}
+
+.form__icon-vstate {
+    z-index: 1;
+    font-size: $sm;
+    opacity: 0;
+}
+/* formulario validación */
+.form__group--correct .form__icon-vstate {
+    color: $success;
+    opacity: 1;
+}
+
+.form__group--incorrect .form__icon-vstate {
+    color: $ward;
+    opacity: 1;
+}
+
+.form__group--incorrect .form__input {
+    border: 2px solid $ward;
+}
+/* error antes de hacer submit */
+.form__message {
+    font-size: $x_sm;
+    width: 77%;
+    background: $ward;
+    padding: 8px;
+    border-radius: 3px;
+    display: none;
+}
+
+.form__message--act {
+    display: block;
+}
+
+/*Contenedor y cards para los dashboards (reutilizables)*/
+.dashboard__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+.dashboard__card {
+    box-sizing: border-box;
+
+    /*Cada tarjeta mide el 30% de la pantalla, pero no puede medir menos de 240px*/
+    width: 30%;
+    min-width: 240px;
+
+    padding: 12px;
+
+    border: 1px solid rgb(233, 233, 233);
+    background-color: $light;
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    box-shadow: 0;
+    transition: all 0.3s ease;
+
+    /*El ancho de la imágen de la card es del 100%*/
+    & img {
+        width: 80%;
+    }
+}
+
+.dashboard__card:hover {
+    transform: translate(1%, -1%);
+    box-shadow: -4px 4px 12px rgb(233, 233, 233);
 }

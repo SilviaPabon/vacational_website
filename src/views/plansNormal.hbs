@@ -1,0 +1,34 @@
+<div class="container container--100vh">
+    <h1 class="title">OFFERED PLANS LIST: </h1>
+
+    {{!-- Alerta de que los planes ofertados son falsos --}}
+    <div class="alert alert--ward">
+        <button class="alert__close">
+            <i class="fas fa-times"></i>
+        </button>
+        <p class="alert__message"><strong>This web page has been produced just for academic purposes:</strong> All plans shown below, along with their prices, are fictitious.</p>
+    </div>
+
+    <div class="userplans-container">
+        {{!-- recorrer --}}
+        {{#each plans}}
+            <article class="userplans-card">
+                <div class="userplans-card__header">
+                    <img loading="lazy" src="{{plansImageUrl}}" alt="{{plansName}} plan image" class="userplans-card__image">
+                    <h2 class="parr parr--orange">{{plansName}}</h2>
+                    <p><span class="parr--orange"> <i class="fas fa-map-marker-alt"></i></span>  Country: <span></span><span class="parr parr--black">{{plansCountry}}</span></p>
+                </div>
+                <div class="userplans-card__body">
+                    <p>From: ${{plansPrice}} usd</p>
+                    <a href="/plans/{{plansId}}" class="parr parr--white btn btn__primary" id="deletePlan">Details</a>
+                </div>
+            </article>
+        {{else}}
+        <div class="container">
+            <article class="admin-plans-card">
+                <p class="parr">There are not plans/reservations available</p>
+            </article>
+        </div>
+        {{/each}}
+    </div>
+</div>

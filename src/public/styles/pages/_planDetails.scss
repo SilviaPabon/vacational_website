@@ -1,0 +1,104 @@
+.plan-container {
+    gap: 16px;
+
+    .plan__image {
+        grid-column: 1/8;
+        display: flex;
+        align-items: center;
+
+        & img {
+            width: 100%;
+            border-radius: 32px;
+        }
+    }
+
+    .plan__main-info {
+        grid-column: 8/-1;
+
+        & p {
+            font-weight: 300;
+
+            & span {
+                font-weight: bold;
+                color: $main_orange;
+            }
+        }
+    }
+}
+
+/*Tabla con los detalles del plan*/
+.plan__details {
+    border-collapse: collapse;
+    width: 100%;
+
+    & th,
+    & td {
+        padding: 8px;
+    }
+
+    & tr:nth-child(even) {
+        background-color: rgb(226, 226, 226);
+    }
+
+    & tr:hover {
+        background-color: rgb(189, 189, 189);
+    }
+
+    margin-bottom: 24px;
+}
+
+.plan__details,
+.plan__details tr,
+.plan__details td {
+    border: 1px solid rgb(180, 180, 180);
+}
+
+/*Sección de los comentarios*/
+.plan__comments{
+
+    grid-column: 1/8;
+
+    & .commentsDescription{
+        resize: none;
+        width: 100%;
+        border: 1px solid $dark_grey_1;
+        border-radius: 8px;
+        height: 60px; 
+    }
+
+    & .planComment{
+
+        margin: 4px 0px 12px;
+        border-bottom: 1px solid rgb(204, 204, 204);
+        position: relative;
+        
+        & p{
+            margin: 0 0 4px 0;
+        }
+
+        &__date, &__name{
+            color: $soft_text;
+            font-size: $x_sm;
+            text-transform: uppercase;
+        }
+
+        &__content{
+            font-weight: 300;
+        }
+
+        & i{
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            color: $main_orange;
+        }
+
+    }
+
+}
+
+.no-comments{
+    font-weight: 300;
+    text-transform: uppercase;
+    color: $soft_text;
+}

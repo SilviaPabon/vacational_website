@@ -1,25 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title from main.hbs</title>
+<html lang='en'>
+    <head>
+        <meta charset='UTF-8' />
+        <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <meta name="description" content="Do you love to travel? We are a travel agency specializing in offering the best destinations at the best prices (including flights, hotels and food).">
 
-    {{!--Favicon--}}
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+        {{!Título de las diferentes páginas}}
+        <title>{{title}}</title>
 
-    {{!--Google fonts--}}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,500;1,900&display=swap" rel="stylesheet">
+        {{!Favicon}}
+        <link rel='shortcut icon' href='/images/favicon.ico' type='image/x-icon' />
 
-    {{!--Custom css styles--}}
-    <link rel="stylesheet" href="/styles/main.css">
-</head>
-<body>
-    
-    {{{body}}}
+        {{!Google fonts}}
+        <link rel='preconnect' href='https://fonts.googleapis.com' />
+        <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+        <link
+            href='https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,500;1,900&display=swap'
+            rel='stylesheet'
+        />
 
-</body>
+        {{!Custom css styles}}
+        <link rel='stylesheet' href='/styles/main.css' />
+
+        {{!Estilos propios de las diferentes páginas (en caso de que existan) }}
+        {{{customStyles}}}
+    </head>
+    <body>
+
+        {{! Navbar }}
+        <nav>
+            <a href='/' class='nav__brand'><img src='/images/brand_logo.png' alt='Brand logo' class='nav__logo' />
+                VACATIONAL AGENCY</a>
+
+            <div class='nav__options'>
+                {{#if user}}
+
+                    {{!--Si hay un usuario puede ir al home, su dashboard o cerrar sesión--}}
+                    <ul class='nav__navigation'>
+                        <li><a href='/' class='btn btn__nav'>HOME</a></li>
+                        <li><a href='/users/logout' class='btn btn__nav '>LOG-OUT</a></li>
+
+                        {{!--La ruta /dashboard es una ruta general que redirige al dashboard según el rol del usuario--}}
+                        <li><a href='/dashboard' class='btn btn__primary'>DASHBOARD</a></li>
+                    </ul>
+
+                {{else}}
+                    {{!-- Si no hay usuarios --}}
+                    <ul class='nav__navigation'>
+                        <li><a href='/' class='btn btn__nav'>HOME</a></li>
+                        <li><a href='/plans' class='btn btn__nav'>OUR PLANS</a></li>
+                        <li><a href='/users/signin' class='btn btn__nav'>LOGIN</a></li>
+                        <li><a href='/users/signup' class='btn btn__primary'>SIGN-UP</a></li>
+                    </ul>
+                {{/if}}
+
+                <!-- Menú para celulares -->
+                <div class='nav__toggle'>
+                    <i class='fas fa-bars'></i>
+                </div>
+            </div>
+        </nav>
+
+        {{> message }} 
+
+        {{{body}}}
+
+        {{! Footer }}
+        <footer class='footer'>
+            <div class='footer__container container'>
+                <p class='footerAuthors'>
+                    WEB PAGE CREATED BY
+                </p>
+                <div class='footer__authors'>
+                    <a href='https://github.com/PedroChaparro' target='_blank' rel="noopener noreferrer" class='btn btn__primary'><i
+                            class='fab fa-github'
+                        ></i>
+                        Pedro Chaparro</a>
+                    <a href='https://github.com/SilviaPabon' target='_blank' rel="noopener noreferrer" class='btn btn__primary'><i
+                            class='fab fa-github'
+                        ></i>
+                        Silvia Pabón</a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Script de la barra de navegación -->
+        <script src='/scripts/navbar.js'></script>
+        <!-- Script para las alertas --> 
+        <script src="/scripts/_alerts.js"></script>
+        <script src='https://kit.fontawesome.com/5023e2a492.js' crossorigin='anonymous'></script>
+    </body>
 </html>

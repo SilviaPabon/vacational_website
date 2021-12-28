@@ -1,1 +1,45 @@
-/*Empty file*/
+nav{
+    height: 60px;
+    background-color: $dark;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 32px;
+    font-size: $md;
+
+    .nav__brand{
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+        font-weight: bolder;
+    }
+
+    .nav__logo{
+        max-width: 50px;
+    }
+
+    .nav__toggle{
+        //Menú para celulares
+        color: white;
+        background-color: $main-orange;
+        display: none;
+        padding: 0.8em; 
+        border-radius: 8px;
+    }
+
+    .nav__navigation{
+        list-style: none;
+        display: flex;
+        gap: 12px;
+
+        & a{
+            text-decoration: none;
+            color: white;
+            font-weight: 300;
+        }
+
+    }
+}

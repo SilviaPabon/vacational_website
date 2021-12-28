@@ -1,0 +1,90 @@
+<div class='container'>
+
+    {{!-- Alerta de que los planes ofertados son falsos --}}
+    <div class="alert alert--ward">
+        <button class="alert__close">
+            <i class="fas fa-times"></i>
+        </button>
+        <p class="alert__message"><strong>This web page has been produced just for academic purposes:</strong> All details shown below are fictitious. If you click on "reserve now", the reservation will be completely fictitious.</p>
+    </div>
+
+    <div class='plan-container grid-12'>
+        {{#if planData}}
+            <div class='plan__image'>
+                <img src='{{planData.plansImageUrl}}' alt='' srcset='' />
+            </div>
+            <div class='plan__main-info'>
+                <h1 class='title title--orange'>{{planData.plansName}}</h1>
+                <p class='plan__price'><span>From: </span>${{planData.plansPrice}} usd</p>
+                <p class='plan__description'><span>Description: </span>{{planData.plansDescription}}</p>
+
+                {{!Tabla con la información de los planes }}
+                <table class='plan__details'>
+                    <tbody>
+                        <tr>
+                            <td>Include Hotel:</td>
+                            <td>{{planData.plansIncludeHotel}}</td>
+                        </tr>
+                        <tr>
+                            <td>Include Flights:</td>
+                            <td>{{planData.plansIncludeFlights}}</td>
+                        </tr>
+                        <tr>
+                            <td>Include Activities:</td>
+                            <td>{{planData.plansIncludeActivities}}</td>
+                        </tr>
+                        <tr>
+                            <td>Number of people per price:</td>
+                            <td>{{planData.plansNumPersons}}</td>
+                        </tr>
+                        <tr>
+                            <td>Plan days:</td>
+                            <td>{{planData.plansDays}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <form action='/user/plans/add' method='post'>
+                        {{!Campos ocultos del formulario para saber al cuál plan pertenece y cuál es el usuario que quiere poner el comentario}}
+                        <input type='hidden' name='plansId' value='{{planData.plansId}}' />
+                        <button type="submit" class="btn btn__primary" name="reserveNow">Reserve now</button>
+                </form>
+            </div>
+
+            <div class='plan__comments'>
+                <h2 class='subtitle subtitle--orange'>Comments</h2>
+                {{!--Si está logueado se le muestra la opción para comentar--}}
+                {{#if user}}
+                    <form action='/plans/comment/{{planData.plansId}}' method='post'>
+                        {{!Campos ocultos del formulario para saber al cuál plan pertenece y cuál es el usuario que quiere poner el comentario}}
+                        <input type='hidden' name='plansId' value='{{planData.plansId}}' />
+                        <input type='hidden' name='usersId' value='{{user.usersId}}' />
+                        <textarea
+                            name='commentsDescription'
+                            class='commentsDescription'
+                            placeholder='Write your own comment here'
+                        ></textarea>
+                        <button type='submit' class='btn btn__primary'>Send my comment</button>
+                    </form>
+                {{/if}}
+
+                {{#if planComments}}
+                    {{!Si existen comentarios, los muestra}}
+                    {{#each planComments}}
+                        <div class='planComment'>
+                            <p class='planComment__date'>{{timeago commentsDate}}</p>
+                            <p class='planComment__name'>Comment by: {{usersFullname}}</p>
+                            <p class='planComment__content'>{{commentsDescription}}</p>
+                            <a href="/plans/comment/delete/{{commentsId}}" id="deleteComment"><i class="fas fa-trash-alt"></i></a>
+                        </div>
+                    {{/each}}
+                {{else}}
+                    {{!Si no hay comentarios}}
+                    <p class='no-comments'>No comments yet</p>
+                {{/if}}
+            </div>
+        {{/if}}
+    </div>
+
+</div>
+
+<script src="/scripts/plans_comment_confirm_delete.js"></script>

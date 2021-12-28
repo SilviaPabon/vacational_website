@@ -1,0 +1,30 @@
+<div class='container container--100vh'>
+
+    <h1 class="title">Plans Management</h1>
+    <a href="/admin/plans/add" class="btn btn__primary">Add a new plan</a>
+
+    <div class='admin-plans-container'>
+        {{#if plansData}}
+
+            {{#each plansData}}
+                
+                <article class="admin-plans-card">
+                    <div class="admins-plans-card__header">
+                        <img loading="lazy" src="{{plansImageUrl}}" alt="{{plansName}} plan image" class="admin-plans-card__image">
+                        <h2 class="subtitle subtitle--grey">{{plansName}}</h2>
+                    </div>
+
+                    <div class="admins-plans-card__body">
+                        <p class="parr">Actions</p>
+                        <a href="/admin/plans/modify/{{plansId}}" class="btn btn__primary_transparent">Modify</a>
+                        <a href="/admin/plans/delete/{{plansId}}" class="btn btn__danger" id="deletePlan">Remove</a>
+                    </div>
+                </article>
+                
+            {{/each}}
+
+        {{/if}}
+    </div>
+</div>
+
+<script src="/scripts/plans_confirm_delete.js"></script>

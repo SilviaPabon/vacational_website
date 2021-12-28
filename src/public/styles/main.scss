@@ -1,9 +1,187 @@
-@import './base/globals'; 
-@import './components/components'; 
-@import './layouts/navbar'; 
+@import './base/globals';
+@import './vendors/normalize';
+@import './components/components';
+@import './layouts/navbar';
+@import './layouts/footer';
+@import './layouts/_alerts';
 @import './pages/home';
+@import './pages/planDetails';
+@import './pages/auth';
+@import './pages/adminPlans';
+@import './pages/adminCreatePlan';
+@import './pages/userReservations';
 
-body{
-    font-family: $roboto; 
+body {
+    font-family: $roboto;
     background: $background_grey;
 }
+
+/*Clase que se le agrega al body cuando se abre el nav (en celulares)*/
+.body--fixed{
+    /*Cuando se abre el nav en celulares, la posición del body se queda fija*/
+    position: fixed;
+    /*Su ancho sigue siendo el 100% de la página (Si no se ponía más ancho)*/
+    width: 100%;
+}
+
+@media (max-width: 1400px) {
+    .hero-content {
+        width: 60%;
+        & h1 {
+            /*Se quita el margin por defecto del título*/
+            margin: 0;
+            font-size: 36px;
+        }
+
+        & p {
+            font-size: 26px;
+        }
+
+        & .btn--hero {
+            font-size: 22px;
+        }
+    }
+}
+
+@media (max-width: 845px) {
+    /*Dispositivos medianos*/
+    .plan-container {
+        /* En dispositivos pequeños la imágen ocupa las 12 columnas del grid */
+        .plan__image {
+            grid-column: 1/-1;
+        }
+
+        /*El dispositivos pequeños los textos también ocupan las 12 columnas del grid, de este modo,
+        Se pone uno debajo del otro */
+        .plan__main-info {
+            grid-column: 1/-1;
+        }
+    }
+
+    .plan__comments {
+        grid-column: 1/-1;
+    }
+
+    .plan-form-overview__inputs {
+        grid-column: 1/-1;
+    }
+
+    .plan-form-overview__image {
+        grid-column: 1/-1;
+        grid-row: 1;
+    }
+
+    .input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container--100vh {
+        /*En celulares se debe restar más ya que el footer se re-acomoda*/
+        min-height: calc(100vh - 260px);
+    }
+
+    .hero-content {
+        width: 60%;
+        & h1 {
+            /*Se quita el margin por defecto del título*/
+            margin: 0;
+            font-size: 28px;
+        }
+
+        & p {
+            font-size: 20px;
+        }
+
+        & .btn--hero {
+            font-size: 18px;
+        }
+    }
+
+    .form-container {
+        grid-column: 1/-1;
+    }
+
+    .auth-img {
+        grid-column: 1/-1;
+        grid-row: 1;
+    }
+}
+
+@media (max-width: 576px) {
+    /*En celulares los tamaños de fuente cambian automáticamente*/
+    $x_sm: 10px;
+    $sm: 12px;
+    $md: 14px;
+    $lg: 16px;
+    $x_lg: 18px;
+
+    /*Celulares*/
+    nav {
+        padding: 0px 16px;
+
+        .nav__navigation {
+            /*Ahora se posiciona en forma de lista debajo del navbar*/
+            position: fixed;
+            top: 60px;
+            left: 100%;
+            width: 100%;
+            height: calc(100vh - 60px);
+            flex-direction: column;
+            overflow-y: auto;
+            z-index: 2;
+
+            background-color: $main-orange;
+            line-height: 36px;
+            margin: 0px;
+            align-items: center;
+            padding-left: 0;
+            padding-top: 16px;
+            transition: 0.6s ease all;
+
+            & li {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        .nav__toggle {
+            display: inline-block;
+        }
+
+        .nav__visible {
+            left: 0; /*Se pasa al visible*/
+        }
+    }
+    /* Hero */
+    .hero-content {
+        & h1 {
+            /*Se quita el margin por defecto del título*/
+            margin: 0;
+            font-size: $lg;
+        }
+
+        & p {
+            font-size: $md;
+        }
+
+        & .btn--hero {
+            font-size: $md;
+        }
+    }
+
+    .footer__authors {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+
+    .dashboard__container {
+        justify-content: center;
+    }
+
+    .reasons-card{
+        width: 80%;
+    }
+} ;
